@@ -323,3 +323,12 @@ textarea.inp{resize:vertical;min-height:120px}
 .quali-doc:hover img{transform:rotate(0)}
 @media (prefers-reduced-motion:reduce){.quali-doc img{transition:none}}
 @media (max-width:860px){.quali{grid-template-columns:minmax(0,1fr)}.quali-doc{order:-1;max-height:240px;width:min(240px,100%)}}
+body{--hh:97px}
+@media (max-width:1100px){body{--hh:77px}}
+/* Hero: im ersten Bildschirm vertikal zentriert, oben und unten gleich viel Luft */
+h1{hyphens:manual;-webkit-hyphens:manual}
+@media (min-width:861px){
+  .hero{--hero-pad:clamp(32px,4vh,56px);min-height:calc(100svh - var(--hh));padding-block:var(--hero-pad);align-content:center}
+  .hero-media{aspect-ratio:auto;height:clamp(340px,calc(100svh - var(--hh) - 2 * var(--hero-pad)),560px)}
+  .visit{margin-top:0}
+}

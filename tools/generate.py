@@ -169,12 +169,13 @@ def visit():
 <p class="info">{I_ACC}<span><strong>Barrierefreiheit:</strong> Der Eingang ist leider nur über Stufen erreichbar.</span></p>
 {ext(ROUTE, "Route planen", "btn2 btn-sm", ' style="align-self:flex-start;margin-top:auto"')}
 </div>
-<div class="card pad"><h3 class="card-title">Gut zu wissen</h3>
-<ul class="facts">
-<li><strong>Rund 4.400 Medien</strong>Bücher, Spiele, Hörbücher und Tonies für alle Altersgruppen.</li>
-<li><strong>Medienwunsch</strong>Fehlt ein Titel? Schreib uns – wir prüfen, ob wir ihn anschaffen können.</li>
-<li><strong>XXL-Vier-gewinnt</strong>Für Geburtstags- und Familienfeiern: 5 Euro für zwei Wochen.</li>
+<div class="card pad"><h3 class="card-title">Schließtage</h3>
+<ul class="facts closed">
+<li><strong>[TT.MM.]</strong>[Anlass, z. B. Allerheiligen]</li>
+<li><strong>[TT.MM.] – [TT.MM.]</strong>[z. B. Weihnachtspause]</li>
+<li><strong>[TT.MM.] – [TT.MM.]</strong>[z. B. Sommerpause]</li>
 </ul>
+<p class="note"><strong>An Feiertagen ist die Bücherei geschlossen.</strong></p>
 </div>
 </div>
 </section>'''
@@ -233,6 +234,20 @@ EVENTS = [
  ('01', 'Sep', '2025', 'Für Kinder von 6 bis 12', 'Bunte Ferienaktion', 'Spielen, Tanzen, Basteln und Vorlesen. Die Lesemännchen und Handabdrücke der Kinder schmücken seither die Bücherei.', 'Rundblick November 2025'),
 ]
 
+# ---------- Kommende Termine (Platzhalter bis zur Pflege im Backoffice) ----------
+UPCOMING = [
+ ('Für Kinder', '[Vorlesestunde]', '[Wochentag], [Uhrzeit] · Bücherei Münzbach', 'Foto: Vorlesen in der Kinderecke'),
+ ('Für Erwachsene', '[Lesung mit Autor:in]', '[Wochentag], [Uhrzeit] · [Ort]', 'Foto: Lesung'),
+ ('Für die ganze Familie', '[Spielenachmittag]', '[Wochentag], [Uhrzeit] · Bücherei Münzbach', 'Foto: Spiele am Tisch'),
+]
+HOME_UP = [('[Vorlesestunde für Kinder]', '[Uhrzeit] · Bücherei Münzbach'), ('[Lesung / Buchausstellung]', '[Uhrzeit] · [Ort]'), ('[Spielenachmittag]', '[Uhrzeit] · Bücherei Münzbach')]
+upcoming_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen"><span class="date"><b>[TT]</b><small>[Monat]</small></span><span class="t"><strong>{t}</strong><span>{m}</span></span></a>' for t, m in HOME_UP)
+upcoming_page = '\n'.join(f'''<article class="card up">
+<span class="date date-lg"><b>[TT]</b><small>[Monat]</small></span>
+<div class="ph">{ph}</div>
+<div class="stack" style="gap:12px"><span class="tag">{tag}</span><h3>{t}</h3><span class="muted">{m}</span><p>[Kurzbeschreibung: Worum geht es, für wen ist es gedacht, braucht es eine Anmeldung?]</p></div>
+</article>''' for tag, t, m, ph in UPCOMING)
+
 # ---------- Startseite ----------
 recent = '\n'.join(f'''<a class="card ev" href="/veranstaltungen#rueckblick"><span class="date" aria-hidden="true"><b>{d}</b><small>{m}</small></span><span class="t"><strong>{t}</strong><span>{int(d)}. {MON[m]} {y} · {tag}</span></span></a>'''
                    for d, m, y, tag, t, x, s in [(e[0], e[1], e[2], e[3], e[4], e[5], e[6]) for e in EVENTS[:3]] for m2 in [m])
@@ -273,9 +288,9 @@ home = f'''<div class="wrap">
 </div>
 </div>
 <div>
-<div class="section-head" style="margin-bottom:20px"><div class="stack"><span class="eyebrow">Zuletzt bei uns</span><h2 style="font-size:clamp(28px,2.8vw,40px)">Veranstaltungen</h2></div><a class="more" href="/veranstaltungen">Alle Veranstaltungen →</a></div>
+<div class="section-head" style="margin-bottom:20px"><div class="stack"><span class="eyebrow">Was ansteht</span><h2 style="font-size:clamp(28px,2.8vw,40px)">Veranstaltungen</h2></div><a class="more" href="/veranstaltungen">Alle Termine →</a></div>
 <div class="ev-list">
-{recent}
+{upcoming_home}
 </div>
 </div>
 </section>
@@ -371,7 +386,9 @@ veran = f'''<section class="page-hero"><div class="wrap single"><div class="stac
 <div class="wrap">
 <section class="section" aria-labelledby="h-demn">
 <div class="section-head"><div class="stack"><span class="eyebrow">Demnächst</span><h2 id="h-demn">Kommende Termine</h2></div></div>
-<div class="card empty"><span class="ico">{I_CAL}</span><div><strong>Die nächsten Termine werden bald bekanntgegeben.</strong><span class="muted">Aktuelle Ankündigungen findest du im Pfarrblatt und auf Instagram.</span></div>{ext(INSTA, "Zu Instagram", "btn2 btn-sm")}</div>
+<div class="up-list">
+{upcoming_page}
+</div>
 </section>
 <section class="section" id="rueckblick" aria-labelledby="h-rueck">
 <div class="section-head"><div class="stack"><span class="eyebrow">Rückblick</span><h2 id="h-rueck">So war's</h2><p class="lead">Ein Auszug aus den vergangenen Veranstaltungen.</p></div></div>
@@ -385,7 +402,7 @@ veran = f'''<section class="page-hero"><div class="wrap single"><div class="stac
 page('veranstaltungen', 'Veranstaltungen', 'Lesungen, Lange Nacht der Bibliotheken, Ferienaktion und Büchereicafé: Veranstaltungen der Bücherei Münzbach.', 'veranstaltungen', veran)
 
 # ---------- Team ----------
-members = '\n'.join(f'''<div class="card member">{tm(m, 190)}<strong>{m["name"]}</strong>{'<span class="role">Leitung</span>' if m.get("role") else ''}</div>''' for m in team)
+members = '\n'.join(f'''<div class="card member">{tm(m, 190)}<strong>{m["name"]}</strong>{'<span class="role">Leitung</span>' if m.get("role") else ''}<span class="reads">Liest gerne: {m.get("reads") or "[Genre]"}</span></div>''' for m in team)
 teamp = f'''<section class="page-hero"><div class="wrap single"><div class="stack"><span class="eyebrow">Unser Team</span><h1>Die Geschichtenhüter:innen</h1>
 <p class="lead">Die Bücherei Münzbach gibt es seit 1890 – damals als einzelner Bücherschrank in der Pfarrkanzlei. 1994 wurden Pfarr- und Gemeindebücherei zusammengelegt. Heute betreuen elf Ehrenamtliche rund 4.400 Medien, die Ausleihe und die Veranstaltungen.</p></div></div></section>
 <div class="wrap">

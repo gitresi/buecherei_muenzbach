@@ -404,6 +404,7 @@ veran = f'''<section class="page-hero"><div class="wrap single"><div class="stac
 </div>'''
 page('veranstaltungen', 'Veranstaltungen', 'Lesungen, Lange Nacht der Bibliotheken, Ferienaktion und Büchereicafé: Veranstaltungen der Bücherei Münzbach.', 'veranstaltungen', veran)
 
+def kb(f): return f'{round(os.path.getsize(OUT + f) / 1024)} KB'
 # ---------- Team ----------
 members = '\n'.join(f'''<div class="card member">{tm(m, 190)}<strong>{m["name"]}</strong>{'<span class="role">Leitung</span>' if m.get("role") else ''}<span class="reads">Liest gerne: {m.get("reads") or "[Genre]"}</span></div>''' for m in team)
 teamp = f'''<section class="page-hero"><div class="wrap single"><div class="stack"><span class="eyebrow">Unser Team</span><h1>Die Geschichtenhüter:innen</h1>
@@ -416,9 +417,12 @@ teamp = f'''<section class="page-hero"><div class="wrap single"><div class="stac
 </div>
 </section>
 <section class="section" aria-labelledby="h-quali">
-<div class="card split" style="margin-top:0;grid-template-columns:1fr">
-<div class="stack" style="gap:14px"><span class="eyebrow">Ausgezeichnet</span><h2 id="h-quali">Qualitätsbestätigung des Büchereiverbands</h2>
-<p class="lead">Im März 2025 hat der Büchereiverband Österreichs (BVÖ) der Bücherei Münzbach erstmals die Qualitätsbestätigung verliehen – gültig für fünf Jahre. Die Anforderungen dafür hat das Team gemeinsam erarbeitet und erfüllt.</p></div>
+<div class="card quali">
+<div class="stack" style="gap:16px"><span class="eyebrow">Ausgezeichnet</span><h2 id="h-quali">Qualitäts&shy;bestätigung für öffentliche Bibliotheken</h2>
+<p class="lead">Am 19. März 2025 hat das EB-Forum Oberösterreich gemeinsam mit den Bibliotheken Oberösterreich der Bücherei Münzbach die Qualitätsbestätigung verliehen. Grundlage war eine kriteriengeleitete Selbstreflexion des Teams und eine externe Prüfung der Unterlagen.</p>
+<p class="muted" style="font-size:17px">Gültig bis 19. März 2030</p>
+<div class="btns"><a class="btn2 btn-sm" href="/downloads/qualitaetsbestaetigung-2025.pdf" target="_blank" rel="noopener">Urkunde ansehen (PDF){EXT}{SR_NEW}</a></div></div>
+<a class="quali-doc" href="/downloads/qualitaetsbestaetigung-2025.pdf" target="_blank" rel="noopener" aria-label="Urkunde der Qualitätsbestätigung als PDF öffnen"><img src="/images/urkunde-qualitaetsbestaetigung.jpg" alt="Urkunde: Qualitätsbestätigung für die Öffentliche Bücherei der Pfarre Münzbach, ausgestellt in Linz am 19. März 2025" width="640" height="905" loading="lazy"></a>
 </div>
 </section>
 {cta("Ehrenamtlich mitarbeiten", "Du möchtest dich ehrenamtlich in der Bücherei engagieren? Dann melde dich gerne bei unseren Geschichtenhüter:innen.", "/kontakt", "Kontakt aufnehmen")}

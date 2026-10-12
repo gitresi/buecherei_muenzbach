@@ -315,3 +315,11 @@ textarea.inp{resize:vertical;min-height:120px}
 /* Team */
 .reads{font-size:16px;color:var(--body);line-height:1.5}
 @media (max-width:640px){.up{grid-template-columns:minmax(0,1fr);gap:16px;padding:20px}.up .ph{grid-column:auto;grid-row:auto;height:160px}.date-lg{width:76px;height:76px;border-radius:16px}.date-lg b{font-size:24px}.date-lg small{font-size:11px}}
+
+/* Qualitätsbestätigung */
+.quali{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(28px,4vw,56px);align-items:center;padding:clamp(24px,3.4vw,48px);border-radius:28px}
+.quali-doc{display:block;justify-self:center;width:min(300px,100%);background:var(--sky);border-radius:20px;padding:28px 28px 0;overflow:hidden;max-height:340px}
+.quali-doc img{width:100%;height:auto;border-radius:4px 4px 0 0;box-shadow:0 8px 24px rgba(27,79,87,.18);transform:rotate(-1.5deg);transition:transform .15s}
+.quali-doc:hover img{transform:rotate(0)}
+@media (prefers-reduced-motion:reduce){.quali-doc img{transition:none}}
+@media (max-width:860px){.quali{grid-template-columns:minmax(0,1fr)}.quali-doc{order:-1;max-height:240px;width:min(240px,100%)}}

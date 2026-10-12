@@ -40,7 +40,7 @@ Solange Resend nicht eingerichtet ist, bietet das Formular automatisch an, die N
 
 ## Vor dem Go-live mit der Bücherei klären
 
-- Adresse „Markt 1, 4323 Münzbach“ und Kartenmarkierung bestätigen
+- Kartenmarkierung prüfen (Adresse Markt 1 laut Urkunde bestätigt)
 - Impressum: Rechtsträger (Pfarre Münzbach) und Leitung bestätigen
 - Datenschutzerklärung von jemandem mit DSGVO-Erfahrung prüfen lassen
 - Buchtipp („Donau so rot“, aus dem Pfarrblatt Ostern 2025) durch einen aktuellen ersetzen

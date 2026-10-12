@@ -9,6 +9,9 @@ team = json.load(open(f'{REPO}/content/team.json'))
 articles = json.load(open(f'{REPO}/content/articles.json'))
 sponsors = json.load(open(f'{REPO}/content/sponsors.json'))
 
+import hashlib
+def ver(rel): return hashlib.md5(open(f'{OUT}/{rel}','rb').read()).hexdigest()[:8]
+CSSV = ver('assets/css/style.css'); JSV = ver('assets/js/main.js')
 EMAIL = 'buecherei.muenzbach@gmail.com'
 TEL = '+43 680 3269469'; TELH = '+436803269469'
 ADR = 'Markt 1, 4323 Münzbach'
@@ -142,7 +145,7 @@ def page(slug, title, desc, cur, body):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/nunito-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v={CSSV}">
 {ld}</head>
 <body>
 {header(cur)}
@@ -150,7 +153,7 @@ def page(slug, title, desc, cur, body):
 {body}
 </main>
 {FOOTER}
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js?v={JSV}" defer></script>
 </body>
 </html>
 '''

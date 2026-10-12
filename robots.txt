@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.buecherei-muenzbach.at/sitemap.xml

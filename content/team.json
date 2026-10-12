@@ -1,0 +1,79 @@
+[
+  {
+    "order": 1,
+    "name": "Martina Prinz",
+    "role": "Leitung",
+    "image": "/images/team/martina-prinz.jpg",
+    "reads": ""
+  },
+  {
+    "order": 2,
+    "name": "Maria Berger",
+    "role": "",
+    "image": "/images/team/maria-berger.jpg",
+    "reads": ""
+  },
+  {
+    "order": 3,
+    "name": "Daniela Neugschwandtner",
+    "role": "",
+    "image": "/images/team/daniela-neugschwandtner.jpg",
+    "reads": ""
+  },
+  {
+    "order": 4,
+    "name": "Elfriede Stockinger",
+    "role": "",
+    "image": "/images/team/elfriede-stockinger.jpg",
+    "reads": ""
+  },
+  {
+    "order": 5,
+    "name": "Doris Reithmayr",
+    "role": "",
+    "image": "/images/team/doris-reithmayr.jpg",
+    "reads": ""
+  },
+  {
+    "order": 6,
+    "name": "Sabrina Riegler",
+    "role": "",
+    "image": "/images/team/sabrina-riegler.jpg",
+    "reads": ""
+  },
+  {
+    "order": 7,
+    "name": "Andrea Krichbaumer",
+    "role": "",
+    "image": "/images/team/andrea-krichbaumer.jpg",
+    "reads": ""
+  },
+  {
+    "order": 8,
+    "name": "Renate Brandstätter",
+    "role": "",
+    "image": "/images/team/renate-brandstaetter.jpg",
+    "reads": ""
+  },
+  {
+    "order": 9,
+    "name": "Karin Pilz",
+    "role": "",
+    "image": "/images/team/karin-pilz.jpg",
+    "reads": ""
+  },
+  {
+    "order": 10,
+    "name": "Andreas Weixelbaumer",
+    "role": "",
+    "image": "/images/team/andreas-weixelbaumer.jpg",
+    "reads": ""
+  },
+  {
+    "order": 11,
+    "name": "Claudia Wiesinger",
+    "role": "",
+    "image": "/images/team/claudia-wiesinger.jpg",
+    "reads": ""
+  }
+]

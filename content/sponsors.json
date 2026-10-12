@@ -1,0 +1,33 @@
+[
+  {
+    "order": 1,
+    "name": "Social Agency",
+    "logo": "/images/sponsoren/social-agency.png"
+  },
+  {
+    "order": 2,
+    "name": "Optik Kroboth",
+    "logo": "/images/sponsoren/optik-kroboth.png"
+  },
+  {
+    "order": 3,
+    "name": "Berger Hagelreparaturen",
+    "logo": "/images/sponsoren/berger-hagelreparaturen.png"
+  },
+  {
+    "order": 4,
+    "name": "Verschönerungsverein Münzbach",
+    "logo": "/images/sponsoren/verschoenerungsverein-muenzbach.png"
+  },
+  {
+    "order": 5,
+    "name": "KF Lebens(t)räume",
+    "logo": "/images/sponsoren/kf-lebenstraeume.png",
+    "note": "aus Visitenkarte freigestellt – Original-Logo anfragen"
+  },
+  {
+    "order": 6,
+    "name": "Fleischerei Pilshofer",
+    "logo": "/images/sponsoren/fleischerei-pilshofer.png"
+  }
+]

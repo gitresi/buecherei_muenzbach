@@ -4,7 +4,7 @@ Website der Öffentlichen Bücherei der Pfarre Münzbach. Umsetzung: Social Agen
 
 ## Stand
 
-Fertige statische Website, bereit für Vercel. Kein Build-Schritt nötig.
+Fertige statische Website, Hosting über Netlify. Kein Framework; der Netlify-Build kopiert nur die auszuliefernden Dateien nach `dist/`.
 
 | Seite | Datei |
 |---|---|
@@ -21,19 +21,21 @@ Fertige statische Website, bereit für Vercel. Kein Build-Schritt nötig.
 - `assets/` – CSS, JavaScript, lokal eingebundene Schriften (Manrope, Nunito – keine Google-Fonts-Verbindung), Logo
 - `images/` – Fotos (jeweils 1600 px und 800 px), Porträts (800 und 400 px), Unterstützer-Logos (PNG, transparent)
 - `downloads/` – Beiträge aus Pfarrblatt und Rundblick als PDF
-- `api/kontakt.js` – Vercel-Funktion für das Kontaktformular (Versand über Resend)
+- `netlify/functions/kontakt.mjs` – Netlify-Funktion für das Kontaktformular (Versand über Resend), erreichbar unter `/api/kontakt`
+- `netlify.toml` – Build, Weiterleitungen, Header
+- `api/`, `vercel.json`, `.vercelignore` – alte Vercel-Variante, wird auf Netlify nicht verwendet
 - `content/*.json` – Team, Beiträge, Unterstützer: Startdaten für das spätere Supabase-Backoffice
 - `tools/generate.py` – erzeugt die HTML-Seiten aus den JSON-Daten (`python3 tools/generate.py`)
-- `_archiv/wireframe/` – Klick-Prototyp, wird nicht ausgeliefert (`.vercelignore`)
+- `_archiv/wireframe/` – Klick-Prototyp, wird nicht ausgeliefert
 
-## Go-live mit Vercel
+## Go-live mit Netlify
 
-1. Repo in Vercel importieren → Framework Preset „Other“, kein Build-Command, Output = Projekt-Root.
-2. Umgebungsvariablen setzen (Settings → Environment Variables):
+1. Netlify → Add new site → Import an existing project → GitHub → Repo `buecherei_muenzbach` wählen. Build-Einstellungen kommen aus `netlify.toml` (nichts eintragen).
+2. Umgebungsvariablen setzen (Site configuration → Environment variables), danach neu deployen:
    - `RESEND_API_KEY` – Schlüssel von resend.com
    - `KONTAKT_ABSENDER` – z. B. `Website Bücherei Münzbach <website@buecherei-muenzbach.at>` (Domain in Resend verifizieren)
    - `KONTAKT_EMPFAENGER` – `buecherei.muenzbach@gmail.com`
-3. Domain unter Settings → Domains hinzufügen, DNS beim Domain-Anbieter auf Vercel umstellen.
+3. Domain unter Domain management hinzufügen, DNS beim Domain-Anbieter auf Netlify umstellen (HTTPS stellt Netlify automatisch aus).
 4. Falls die Domain nicht `buecherei-muenzbach.at` ist: Domain in `tools/generate.py` (canonical, og:image, Schema), `robots.txt` und `sitemap.xml` anpassen.
 
 Solange Resend nicht eingerichtet ist, bietet das Formular automatisch an, die Nachricht per E-Mail-Programm zu schicken.

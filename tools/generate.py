@@ -199,7 +199,7 @@ def form(prefix, full=False):
     else:
         row = f'''<div class="row2">
 <div class="field"><label for="{prefix}-anliegen">Anliegen</label><select id="{prefix}-anliegen" name="anliegen" class="inp"><option>Medienwunsch</option><option>Frage</option><option>Sonstiges</option></select></div>
-<div class="field"><label for="{prefix}-titel">Titel / Autor:in <small>(bei Medienwunsch)</small></label><input id="{prefix}-titel" name="titel" class="inp" type="text"></div>
+<div class="field"><label for="{prefix}-titel">Titel / Autor:in</label><input id="{prefix}-titel" name="titel" class="inp" type="text" placeholder="bei Medienwunsch"></div>
 </div>'''
     head = '<h2 style="font-size:clamp(28px,2.6vw,38px)">Nachricht &amp; Medienwunsch</h2>' if full else ''
     return f'''<form class="card" data-contact novalidate>
@@ -220,7 +220,10 @@ def cta(title, text, href='/kontakt', label='Medienwunsch senden'):
     return f'<section class="cta"><div><h2>{title}</h2><p>{text}</p></div><a class="btn" href="{href}">{label}</a></section>'
 
 def sponsors_block():
-    items = '\n'.join(f'<li><img src="{s["logo"]}" alt="{s["name"]}" loading="lazy"></li>' for s in sponsors if s.get('logo'))
+    def logo(s):
+        img = f'<img src="{s["logo"]}" alt="{s["name"]}" loading="lazy">'
+        return f'<a href="{s["url"]}" target="_blank" rel="noopener" title="{s["name"]} – Website öffnet in neuem Tab">{img}</a>' if s.get('url') else img
+    items = '\n'.join(f'<li>{logo(s)}</li>' for s in sponsors if s.get('logo'))
     return f'<section class="sponsors" aria-labelledby="h-unterst"><h2 class="eyebrow" id="h-unterst">Mit Unterstützung von</h2><ul class="logos">\n{items}\n</ul></section>'
 
 def tm(m, size):
@@ -236,6 +239,28 @@ EVENTS = [
  ('20', 'Sep', '2025', 'Für alle', 'Büchereicafé mit Bücherflohmarkt', 'Bücher, Spiele und DVDs zum Schnäppchenpreis, dazu Kaffee und Kuchen. Mit dem Erlös wurden neue Medien angeschafft.', 'Rundblick November 2025'),
  ('01', 'Sep', '2025', 'Für Kinder von 6 bis 12', 'Bunte Ferienaktion', 'Spielen, Tanzen, Basteln und Vorlesen. Die Lesemännchen und Handabdrücke der Kinder schmücken seither die Bücherei.', 'Rundblick November 2025'),
 ]
+
+# Fotos je Veranstaltung (Slider). Wo es noch keine eigenen Fotos gibt, stehen Bilder aus der Bücherei.
+EV_IMG = {
+ 'Ferienaktion der Bücherei': ['kinder', 'schild'],
+ 'Miteinanderfest mit Bücherwurm Willi': ['schild', 'raum'],
+ 'Lange Nacht der Bibliotheken': [('/images/veranstaltungen/lange-nacht-2026.jpg', 'Kinder basteln bei der Langen Nacht der Bibliotheken gelbe Sterne'), 'raumhoch'],
+ 'Lesezauber im Advent': [('/images/veranstaltungen/lesezauber-2025.jpg', 'Plakat „Lesezauber im Advent“ mit aufgeschlagenem Buch'), 'ecke'],
+ 'Büchereicafé mit Bücherflohmarkt': [('/images/veranstaltungen/buechereicafe-2025-1.jpg', 'Besucherin mit Kind beim Büchereicafé, im Hintergrund Kuchen und Kaffee'), ('/images/veranstaltungen/buechereicafe-2025-2.jpg', 'Mitarbeiterin zeigt ein Spiel vor dem Spieleregal')],
+ 'Bunte Ferienaktion': [('/images/veranstaltungen/ferienaktion-2025.jpg', 'Mitarbeiterinnen mit Familien und Kleinkind bei der Ferienaktion'), 'kinder'],
+}
+def ev_slider(title):
+    slides = []
+    for it in EV_IMG.get(title, []):
+        if isinstance(it, str):
+            p, a, w, h = IMG[it]; slides.append(f'<img src="{p[:-4]}-800.jpg" alt="{a}" loading="lazy" decoding="async">')
+        else:
+            slides.append(f'<img src="{it[0]}" alt="{it[1]}" loading="lazy" decoding="async">')
+    if not slides: return ''
+    n = len(slides)
+    nav = '' if n < 2 else ('<button type="button" class="sl-btn prev" aria-label="Vorheriges Foto">‹</button><button type="button" class="sl-btn next" aria-label="Nächstes Foto">›</button>'
+        + '<div class="sl-dots" aria-hidden="true">' + ''.join(f'<span{" class=" + chr(34) + "on" + chr(34) if i == 0 else ""}></span>' for i in range(n)) + '</div>')
+    return f'<div class="slider" data-slider><div class="sl-track" tabindex="0" aria-label="Fotos: {title}">{"".join(slides)}</div>{nav}</div>'
 
 # ---------- Kommende Termine (Platzhalter bis zur Pflege im Backoffice) ----------
 UPCOMING = [
@@ -320,7 +345,7 @@ home = f'''<div class="wrap">
 <section class="section" aria-labelledby="h-team">
 <div class="section-head"><div class="stack"><span class="eyebrow">Unser Team</span><h2 id="h-team">Die Geschichtenhüter:innen</h2><p class="lead">Elf Ehrenamtliche mit viel Freude am Lesen – und immer bereit für eine Empfehlung.</p></div><a class="more" href="/team">Das ganze Team →</a></div>
 <div class="team-teaser">
-{''.join(f'<div class="person">{tm(m, 220)}<strong>{m["name"]}</strong></div>' for m in team[:4])}
+{''.join(f'<div class="person">{tm(m, 220)}<strong>{m["name"]}</strong><span class="reads">Liest gerne: {m.get("reads") or "[Genre]"}</span></div>' for m in team[:4])}
 </div>
 </section>
 
@@ -383,8 +408,9 @@ page('angebot', 'Angebot', 'Bücher, Spiele, Tonies, Hörbücher und CDs zum Aus
 
 # ---------- Veranstaltungen ----------
 past = '\n'.join(f'''<article class="card past">
+{ev_slider(t)}<div class="past-body">
 <div class="when"><span class="date" aria-hidden="true"><b>{d}</b><small>{m}</small></span><div class="stack" style="gap:2px"><span class="tag">{tag}</span><span class="muted" style="font-size:16px">{int(d)}. {MON[m]} {y}</span></div></div>
-<h3>{t}</h3><p>{x}</p><span class="src">Quelle: {s}</span></article>''' for d, m, y, tag, t, x, s in EVENTS)
+<h3>{t}</h3><p>{x}</p><span class="src">Quelle: {s}</span></div></article>''' for d, m, y, tag, t, x, s in EVENTS)
 veran = f'''<section class="page-hero"><div class="wrap single"><div class="stack"><span class="eyebrow">Veranstaltungen</span><h1>Lesen, zuhören, mitmachen</h1><p class="lead">Lesungen, Vorlesetheater, Ferienaktionen und das Büchereicafé: In der Bücherei Münzbach ist das ganze Jahr über etwas los.</p></div></div></section>
 <div class="wrap">
 <section class="section" aria-labelledby="h-demn">

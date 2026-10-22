@@ -60,4 +60,23 @@
         .then(function () { submit.disabled = false; });
     });
   });
+  // Foto-Slider bei den Veranstaltungen
+  document.querySelectorAll('[data-slider]').forEach(function (sl) {
+    var track = sl.querySelector('.sl-track');
+    var dots = sl.querySelectorAll('.sl-dots span');
+    var n = track.children.length;
+    function idx() { return Math.round(track.scrollLeft / track.clientWidth); }
+    function go(i) { i = (i + n) % n; track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' }); }
+    var p = sl.querySelector('.prev'), nx = sl.querySelector('.next');
+    if (p) p.addEventListener('click', function () { go(idx() - 1); });
+    if (nx) nx.addEventListener('click', function () { go(idx() + 1); });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(idx() + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx() - 1); }
+    });
+    track.addEventListener('scroll', function () {
+      var i = idx();
+      dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+    }, { passive: true });
+  });
 })();

@@ -2,32 +2,38 @@
   {
     "order": 1,
     "name": "Social Agency",
-    "logo": "/images/sponsoren/social-agency.png"
+    "logo": "/images/sponsoren/social-agency.png",
+    "url": "https://www.social-agency.at"
   },
   {
     "order": 2,
     "name": "Optik Kroboth",
-    "logo": "/images/sponsoren/optik-kroboth.png"
+    "logo": "/images/sponsoren/optik-kroboth.png",
+    "url": "https://www.optikkroboth.at"
   },
   {
     "order": 3,
     "name": "Berger Hagelreparaturen",
-    "logo": "/images/sponsoren/berger-hagelreparaturen.png"
+    "logo": "/images/sponsoren/berger-hagelreparaturen.png",
+    "url": ""
   },
   {
     "order": 4,
     "name": "Verschönerungsverein Münzbach",
-    "logo": "/images/sponsoren/verschoenerungsverein-muenzbach.png"
+    "logo": "/images/sponsoren/verschoenerungsverein-muenzbach.png",
+    "url": ""
   },
   {
     "order": 5,
     "name": "KF Lebens(t)räume",
     "logo": "/images/sponsoren/kf-lebenstraeume.png",
-    "note": "aus Visitenkarte freigestellt – Original-Logo anfragen"
+    "note": "aus Visitenkarte freigestellt – Original-Logo anfragen",
+    "url": ""
   },
   {
     "order": 6,
     "name": "Fleischerei Pilshofer",
-    "logo": "/images/sponsoren/fleischerei-pilshofer.png"
+    "logo": "/images/sponsoren/fleischerei-pilshofer.png",
+    "url": "https://www.fleischerei-pilshofer.at"
   }
 ]

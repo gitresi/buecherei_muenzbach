@@ -528,21 +528,54 @@ page('impressum', 'Impressum', 'Impressum der Website der Öffentlichen Büchere
 # ---------- Datenschutz ----------
 ds = f'''<section class="page-hero"><div class="wrap single"><div class="stack"><h1>Datenschutzerklärung</h1></div></div></section>
 <div class="wrap"><div class="prose">
-<h2 style="margin-top:0">Verantwortlich</h2>
-<p>Öffentliche Bücherei der Pfarre Münzbach, {ADR}, E-Mail: <a href="mailto:{EMAIL}">{EMAIL}</a></p>
-<h2>Grundsatz</h2>
-<p>Diese Website setzt keine Cookies, verwendet keine Analyse- oder Werbewerkzeuge und lädt keine Schriften oder Inhalte von Drittanbietern, solange du nicht selbst aktiv wirst (etwa beim Laden der Karte).</p>
+<p style="margin-top:0">Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (<a href="https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:32016R0679" target="_blank" rel="noopener">DSGVO</a>, <a href="https://www.dsb.gv.at/gesetze-in-osterreich" target="_blank" rel="noopener">DSG</a>, <a href="https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&amp;Gesetzesnummer=20011678" target="_blank" rel="noopener">TKG 2021</a>). In diesen Datenschutzinformationen informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website. Außerdem informieren wir Sie über Ihre Rechte als betroffene Person der Datenverarbeitung.</p>
+<p>Wir bitten Sie, diese Datenschutzerklärung sorgfältig zu lesen.</p>
+<h2>Verantwortlich</h2>
+<p>Öffentliche Bücherei der Pfarre Münzbach<br>{ADR}<br><a href="tel:{TELH}">{TEL}</a> (WhatsApp bevorzugt)<br><a href="mailto:{EMAIL}">{EMAIL}</a></p>
+<h2>Persönliche Daten</h2>
+<p>Persönliche Daten, die Sie auf dieser Website elektronisch übermitteln, wie zum Beispiel Name, E-Mail-Adresse oder andere persönliche Angaben, werden von uns nur zum jeweils angegebenen Zweck verwendet, sicher verwahrt und nicht an Dritte weitergegeben. Ausgenommen sind die unten genannten Dienstleister, die in unserem Auftrag die Website betreiben und Nachrichten zustellen.</p>
+<p>Der Provider erhebt und speichert automatisch Informationen am Webserver wie zum Beispiel verwendeter Browser, Betriebssystem, Verweisseite, IP-Adresse, Datum und Uhrzeit des Zugriffs. Diese Daten können ohne Prüfung weiterer Datenquellen keinen bestimmten Personen zugeordnet werden und werden nur zu internen systembezogenen und statistischen Zwecken verwendet und nicht weiter ausgewertet, solange keine rechtswidrige Nutzung der Website vorliegt.</p>
 <h2>Hosting</h2>
-<p>Die Website wird bei Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA, betrieben. Beim Aufruf verarbeitet Netlify technisch notwendige Daten wie IP-Adresse, Datum und Uhrzeit, aufgerufene Seite und Browsertyp, um die Website auszuliefern und vor Missbrauch zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Mit Netlify besteht ein Auftragsverarbeitungsvertrag; die Übermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. von Standardvertragsklauseln.</p>
-<h2>Kontaktformular und E-Mail</h2>
-<p>Wenn du uns über das Formular oder per E-Mail schreibst, verarbeiten wir die angegebenen Daten (Name, E-Mail-Adresse, Nachricht, gegebenenfalls Medienwunsch) ausschließlich zur Bearbeitung deiner Anfrage (Art. 6 Abs. 1 lit. a und b DSGVO). Die Nachricht wird über den Versanddienst Resend (Resend Inc., USA) an unser Postfach weitergeleitet. Wir löschen die Daten, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
-<h2>Karte (OpenStreetMap)</h2>
-<p>Auf der Kontaktseite kannst du eine Karte von OpenStreetMap laden. Erst nach deinem Klick auf „Karte anzeigen“ wird eine Verbindung zu den Servern der OpenStreetMap Foundation (St John’s Innovation Centre, Cowley Road, Cambridge, CB4 0WS, Vereinigtes Königreich) aufgebaut und deine IP-Adresse übertragen (Art. 6 Abs. 1 lit. a DSGVO).</p>
+<p>Die Website wird bei Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA, betrieben. Netlify verarbeitet die oben genannten Zugriffsdaten, um die Website auszuliefern und vor Missbrauch zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Mit Netlify besteht ein Auftragsverarbeitungsvertrag; die Übermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. von Standardvertragsklauseln.</p>
+<h2>Formulardaten und Kontaktaufnahme</h2>
+<p>Wenn Sie via Formular auf der Website oder per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen zwölf Monate bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Nachrichten aus dem Kontaktformular werden über den Versanddienst Resend (Resend, Inc., USA) an unser Postfach zugestellt.</p>
+<p>Wir ersuchen Sie, beim Schutz Ihrer Daten mitzuhelfen, indem Sie uns vertrauliche Informationen nicht über unverschlüsselte Kommunikationswege zukommen lassen.</p>
+<h2>Datenspeicherung</h2>
+<p>Wir weisen darauf hin, dass zum Zweck von Medien-Reservierungen und Online-Katalog-Funktionen vom jeweils externen Service-Anbieter gegebenenfalls Cookies und IP-Daten des Benutzers dieser Services gespeichert werden. Eine Zusammenarbeit erfolgt nur mit Dienstleistern, die DSGVO-konform sind.</p>
+<p>Darüber hinaus werden zum Zweck des Verleihs von Medien folgende Daten auch bei uns gespeichert:</p>
+<ul>
+<li>Vor- und Nachname</li>
+<li>Adresse</li>
+<li>Telefonnummer</li>
+<li>E-Mail</li>
+<li>Geburtsdatum</li>
+<li>Lesernummer</li>
+<li>Aktuell entlehnte Medien</li>
+</ul>
+<p>Die von Ihnen bereitgestellten Daten sind zur Durchführung des Verleihs erforderlich. Ohne diese Daten können wir keinen Verleih von Medien durchführen. Eine Datenübermittlung an Dritte erfolgt ausschließlich an DSGVO-konforme Dienstleister und nur im geringst notwendigen Umfang, welcher zur Nutzung der Online-Dienstleistungen nötig ist.</p>
+<p>Ihre persönlichen Leserdaten werden ab Rückgabe des letzten Mediums noch drei Jahre zur Geltendmachung von Schadenersatzansprüchen gespeichert.</p>
+<p>Möchten Sie als Leserin oder Leser aus unserer Bücherei ausscheiden und geben uns dies bekannt, werden die bei uns gespeicherten Daten gelöscht, sofern keine Medien und/oder Gebühren mehr ausständig sind.</p>
+<p>Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des § 165 Abs. 3 TKG sowie des Art. 6 Abs. 1 lit. a (Einwilligung) und/oder lit. b (notwendig zur Vertragserfüllung) der DSGVO.</p>
+<h2>Cookies</h2>
+<p>Diese Website selbst setzt keine Cookies und verwendet keine Analyse- oder Werbewerkzeuge. Schriften werden lokal ausgeliefert, nicht von Drittanbietern geladen.</p>
+<p>Cookies können nur von externen Diensten gesetzt werden, die Sie selbst aufrufen, etwa beim Laden der Karte (siehe unten) oder im Online-Katalog. Cookies sind kleine Textdateien, die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Wenn Sie dies nicht wünschen, können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert und Sie dies nur im Einzelfall erlauben. Nähere Informationen zum Löschen von Cookies finden Sie in Ihrer Browseranleitung (unter „Hilfe“ im Browsermenü).</p>
+<h2>Verwendung von OpenStreetMap</h2>
+<p>Auf der Kontaktseite können Sie eine Karte laden, die von der OpenStreetMap Foundation (OSMF), St John’s Innovation Centre, Cowley Road, Cambridge, CB4 0WS, Vereinigtes Königreich, bereitgestellt wird. Die Karte wird erst nach Ihrem Klick auf „Karte anzeigen“ mittels eines iframes eingebunden. Erst dann wird eine Verbindung zu den Servern von OpenStreetMap aufgebaut, Ihre IP-Adresse übertragen und gegebenenfalls ein Sitzungscookie gesetzt (Art. 6 Abs. 1 lit. a DSGVO).</p>
+<p>Informationen zum Datenschutz und zu den rechtlichen Rahmenbedingungen bei OpenStreetMap:</p>
+<ul>
+<li><a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy#Map_Data" target="_blank" rel="noopener">wiki.osmfoundation.org/wiki/Privacy_Policy</a></li>
+<li><a href="https://wiki.osmfoundation.org/wiki/Licence/Licence_and_Legal_FAQ" target="_blank" rel="noopener">wiki.osmfoundation.org/wiki/Licence/Licence_and_Legal_FAQ</a></li>
+</ul>
 <h2>Externe Links</h2>
-<p>Links zum Online-Katalog (Biblioweb), zu Instagram, Google Maps und zur Pfarre Münzbach führen auf Seiten anderer Anbieter. Für die Datenverarbeitung dort sind die jeweiligen Betreiber verantwortlich.</p>
-<h2>Deine Rechte</h2>
-<p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, eine erteilte Einwilligung jederzeit zu widerrufen. Wende dich dazu an <a href="mailto:{EMAIL}">{EMAIL}</a>. Du kannst dich außerdem bei der Österreichischen Datenschutzbehörde (<a href="https://www.dsb.gv.at" target="_blank" rel="noopener">dsb.gv.at</a>) beschweren.</p>
-<p class="muted">Stand: Oktober 2026</p>
+<p>Links zum Online-Katalog (Biblioweb), zu Instagram, Google Maps, zur Pfarre Münzbach und zu unseren Unterstützern führen auf Seiten anderer Anbieter. Für die Datenverarbeitung dort sind die jeweiligen Betreiber verantwortlich.</p>
+<h2>Ihre Rechte</h2>
+<p>Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerruf zu.</p>
+<p>Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund eines berechtigten Interesses verarbeitet werden, Widerspruch einzulegen.</p>
+<p>Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der Aufsichtsbehörde beschweren, sofern wir nicht in angemessener Zeit reagieren. In Österreich ist dies die Datenschutzbehörde (<a href="https://www.dsb.gv.at" target="_blank" rel="noopener">dsb.gv.at</a>).</p>
+<h2>Kontakt</h2>
+<p>Sie erreichen uns unter folgenden Kontaktdaten:<br>Öffentliche Bücherei der Pfarre Münzbach<br>{ADR}<br><a href="tel:{TELH}">{TEL}</a> (WhatsApp bevorzugt)<br><a href="mailto:{EMAIL}">{EMAIL}</a></p>
+<p class="muted">Dieses Dokument wurde auf Basis der <a href="https://www.wko.at/service/wirtschaftsrecht-gewerberecht/muster-informationspflichten-website-datenschutzerklaerung.html" target="_blank" rel="noopener">WKO-Vorlage</a> erstellt und erweitert. Anwaltliche Beratung durch: Mag. Markus Dörfler, Rechtsanwalt und Partner der Kanzlei Höhne, In der Maur &amp; Partner Rechtsanwälte, <a href="http://www.h-i-p.at/" target="_blank" rel="noopener">www.h-i-p.at</a> und <a href="https://datenschutz-recht.at/" target="_blank" rel="noopener">datenschutz-recht.at</a>. Alle Angaben erfolgen trotz sorgfältigster Bearbeitung ohne Gewähr. Eine Haftung des Büchereiverbandes Österreichs ist ausgeschlossen. Bei allen personenbezogenen Bezeichnungen gilt die gewählte Form für alle Geschlechter.</p>
+<p class="muted">Stand: November 2026</p>
 </div></div>'''
 page('datenschutz', 'Datenschutz', 'Datenschutzerklärung der Website der Öffentlichen Bücherei der Pfarre Münzbach.', '', ds)
 

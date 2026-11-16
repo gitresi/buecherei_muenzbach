@@ -41,7 +41,7 @@
     "order": 7,
     "name": "Raiffeisen Perg",
     "logo": "/images/sponsoren/raiffeisen-perg.png",
-    "url": ""
+    "url": "https://www.raiffeisen.at/ooe/perg/de/privatkunden.html"
   },
   {
     "order": 8,
@@ -59,6 +59,6 @@
     "order": 10,
     "name": "Gemeinde Münzbach",
     "logo": "/images/sponsoren/gemeinde-muenzbach.png",
-    "url": ""
+    "url": "https://www.muenzbach.at"
   }
 ]

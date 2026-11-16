@@ -3,7 +3,8 @@
     "order": 1,
     "name": "Pfarre Münzbach",
     "logo": "/images/sponsoren/pfarre-muenzbach.png",
-    "url": "https://www.dioezese-linz.at/pfarre/4240"
+    "url": "https://www.dioezese-linz.at/pfarre/4240",
+    "hochformat": true
   },
   {
     "order": 2,

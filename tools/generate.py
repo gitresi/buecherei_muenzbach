@@ -221,7 +221,8 @@ def cta(title, text, href='/kontakt', label='Medienwunsch senden'):
 
 def sponsors_block():
     def logo(s):
-        img = f'<img src="{s["logo"]}" alt="{s["name"]}" loading="lazy">'
+        cls = ' class="hoch"' if s.get('hochformat') else ''
+        img = f'<img src="{s["logo"]}" alt="{s["name"]}"{cls} loading="lazy">'
         return f'<a href="{s["url"]}" target="_blank" rel="noopener" title="{s["name"]} – Website öffnet in neuem Tab">{img}</a>' if s.get('url') else img
     items = '\n'.join(f'<li>{logo(s)}</li>' for s in sponsors if s.get('logo'))
     return f'<section class="sponsors" aria-labelledby="h-unterst"><h2 class="eyebrow" id="h-unterst">Mit Unterstützung von</h2><ul class="logos">\n{items}\n</ul></section>'

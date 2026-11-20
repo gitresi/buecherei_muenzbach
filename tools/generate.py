@@ -338,8 +338,7 @@ home = f'''<div class="wrap">
 
 <section class="quote" aria-label="Zitat">
 <div class="wrap"><span class="eyebrow">Weniger Bildschirm, mehr Papier</span>
-<blockquote>„Beim Lesen guter Bücher wächst die Seele empor.“</blockquote>
-<cite>Voltaire</cite></div>
+<blockquote>„Wo Bücher sind, beginnt die Fantasie zu fliegen.“</blockquote></div>
 </section>
 
 <div class="wrap">

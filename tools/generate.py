@@ -243,7 +243,7 @@ EVENTS = [
 
 # Fotos je Veranstaltung (Slider). Wo es noch keine eigenen Fotos gibt, stehen Bilder aus der Bücherei.
 EV_IMG = {
- 'Ferienaktion der Bücherei': ['kinder', 'schild'],
+ 'Ferienaktion der Bücherei': [('/images/veranstaltungen/ferienaktion-2026-1.jpg', 'Kinder und Betreuerinnen beim Picknick auf Decken in der Wiese'), ('/images/veranstaltungen/ferienaktion-2026-2.jpg', 'Von Kindern gelegtes Naturbild aus Ästen, Blättern und Früchten am Waldboden')],
  'Miteinanderfest mit Bücherwurm Willi': ['schild', 'raum'],
  'Lange Nacht der Bibliotheken': [('/images/veranstaltungen/lange-nacht-2026.jpg', 'Kinder basteln bei der Langen Nacht der Bibliotheken gelbe Sterne'), 'raumhoch'],
  'Lesezauber im Advent': [('/images/veranstaltungen/lesezauber-2025.jpg', 'Plakat „Lesezauber im Advent“ mit aufgeschlagenem Buch'), 'ecke'],

@@ -264,6 +264,9 @@ def ev_slider(title):
     return f'<div class="slider" data-slider><div class="sl-track" tabindex="0" aria-label="Fotos: {title}">{"".join(slides)}</div>{nav}</div>'
 
 # ---------- Kommende Termine (Platzhalter bis zur Pflege im Backoffice) ----------
+# Auf True setzen, sobald echte Termine eingetragen sind. Bei False: Abschnitt auf der
+# Veranstaltungsseite ausgeblendet, Startseite zeigt stattdessen die letzten Veranstaltungen.
+SHOW_UPCOMING = False
 UPCOMING = [
  ('Für Kinder', '[Vorlesestunde]', '[Wochentag], [Uhrzeit] · Bücherei Münzbach', 'Foto: Vorlesen in der Kinderecke'),
  ('Für Erwachsene', '[Lesung mit Autor:in]', '[Wochentag], [Uhrzeit] · [Ort]', 'Foto: Lesung'),
@@ -271,6 +274,17 @@ UPCOMING = [
 ]
 HOME_UP = [('[Vorlesestunde für Kinder]', '[Uhrzeit] · Bücherei Münzbach'), ('[Lesung / Buchausstellung]', '[Uhrzeit] · [Ort]'), ('[Spielenachmittag]', '[Uhrzeit] · Bücherei Münzbach')]
 upcoming_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen"><span class="date"><b>[TT]</b><small>[Monat]</small></span><span class="t"><strong>{t}</strong><span>{m}</span></span></a>' for t, m in HOME_UP)
+recent_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen#rueckblick"><span class="date"><b>{d}</b><small>{m}</small></span><span class="t"><strong>{t}</strong><span>{int(d)}. {MON[m]} {y}</span></span></a>' for d, m, y, tag, t, x, s in EVENTS[:3])
+if SHOW_UPCOMING:
+    home_events = f'''<div class="section-head" style="margin-bottom:20px"><div class="stack"><span class="eyebrow">Was ansteht</span><h2 style="font-size:clamp(28px,2.8vw,40px)">Veranstaltungen</h2></div><a class="more" href="/veranstaltungen">Alle Termine →</a></div>
+<div class="ev-list">
+{upcoming_home}
+</div>'''
+else:
+    home_events = f'''<div class="section-head" style="margin-bottom:20px"><div class="stack"><span class="eyebrow">Zuletzt</span><h2 style="font-size:clamp(28px,2.8vw,40px)">Veranstaltungen</h2></div><a class="more" href="/veranstaltungen">Alle Veranstaltungen →</a></div>
+<div class="ev-list">
+{recent_home}
+</div>'''
 upcoming_page = '\n'.join(f'''<article class="card up">
 <span class="date date-lg"><b>[TT]</b><small>[Monat]</small></span>
 <div class="ph">{ph}</div>
@@ -317,10 +331,7 @@ home = f'''<div class="wrap">
 </div>
 </div>
 <div>
-<div class="section-head" style="margin-bottom:20px"><div class="stack"><span class="eyebrow">Was ansteht</span><h2 style="font-size:clamp(28px,2.8vw,40px)">Veranstaltungen</h2></div><a class="more" href="/veranstaltungen">Alle Termine →</a></div>
-<div class="ev-list">
-{upcoming_home}
-</div>
+{home_events}
 </div>
 </section>
 
@@ -411,14 +422,15 @@ past = '\n'.join(f'''<article class="card past">
 {ev_slider(t)}<div class="past-body">
 <div class="when"><span class="date" aria-hidden="true"><b>{d}</b><small>{m}</small></span><div class="stack" style="gap:2px"><span class="tag">{tag}</span><span class="muted" style="font-size:16px">{int(d)}. {MON[m]} {y}</span></div></div>
 <h3>{t}</h3><p>{x}</p><span class="src">Quelle: {s}</span></div></article>''' for d, m, y, tag, t, x, s in EVENTS)
-veran = f'''<section class="page-hero"><div class="wrap single"><div class="stack"><span class="eyebrow">Veranstaltungen</span><h1>Lesen, zuhören, mitmachen</h1><p class="lead">Lesungen, Vorlesetheater, Ferienaktionen und das Büchereicafé: In der Bücherei Münzbach ist das ganze Jahr über etwas los.</p></div></div></section>
-<div class="wrap">
-<section class="section" aria-labelledby="h-demn">
+upcoming_section = f'''<section class="section" aria-labelledby="h-demn">
 <div class="section-head"><div class="stack"><span class="eyebrow">Demnächst</span><h2 id="h-demn">Kommende Termine</h2></div></div>
 <div class="up-list">
 {upcoming_page}
 </div>
-</section>
+</section>''' if SHOW_UPCOMING else ''
+veran = f'''<section class="page-hero"><div class="wrap single"><div class="stack"><span class="eyebrow">Veranstaltungen</span><h1>Lesen, zuhören, mitmachen</h1><p class="lead">Lesungen, Vorlesetheater, Ferienaktionen und das Büchereicafé: In der Bücherei Münzbach ist das ganze Jahr über etwas los.</p></div></div></section>
+<div class="wrap">
+{upcoming_section}
 <section class="section" id="rueckblick" aria-labelledby="h-rueck">
 <div class="section-head"><div class="stack"><span class="eyebrow">Rückblick</span><h2 id="h-rueck">So war's</h2><p class="lead">Ein Auszug aus den vergangenen Veranstaltungen.</p></div></div>
 <div class="grid g3">

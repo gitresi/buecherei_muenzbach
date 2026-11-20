@@ -229,7 +229,9 @@ def sponsors_block():
 
 def tm(m, size):
     src = m['image']; b = src[:-4]
-    return f'<img src="{b}-400.jpg" srcset="{b}-400.jpg 400w, {src} 800w" sizes="{size}px" alt="Porträt von {m["name"]}" width="400" height="400" loading="lazy" decoding="async">'
+    # ?v= ändert sich mit dem Bildinhalt, damit Browser ein ausgetauschtes Foto sofort neu laden
+    s400 = f'{b}-400.jpg?v={ver(b[1:] + "-400.jpg")}'; s800 = f'{src}?v={ver(src[1:])}'
+    return f'<img src="{s400}" srcset="{s400} 400w, {s800} 800w" sizes="{size}px" alt="Porträt von {m["name"]}" width="400" height="400" loading="lazy" decoding="async">'
 
 MON={'Aug':'August','Mai':'Mai','Apr':'April','Dez':'Dezember','Sep':'September'}
 EVENTS = [

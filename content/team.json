@@ -4,76 +4,76 @@
     "name": "Martina Prinz",
     "role": "Leitung",
     "image": "/images/team/martina-prinz.jpg",
-    "reads": ""
+    "reads": "Thriller und Krimis"
   },
   {
     "order": 2,
     "name": "Maria Berger",
-    "role": "",
+    "role": "Stellvertretung",
     "image": "/images/team/maria-berger.jpg",
-    "reads": ""
+    "reads": "historische Romane"
   },
   {
     "order": 3,
-    "name": "Daniela Neugschwandtner",
+    "name": "Renate Brandstätter",
     "role": "",
-    "image": "/images/team/daniela-neugschwandtner.jpg",
-    "reads": ""
+    "image": "/images/team/renate-brandstaetter.jpg",
+    "reads": "historische Romane, regionale Krimis"
   },
   {
     "order": 4,
-    "name": "Elfriede Stockinger",
+    "name": "Andrea Krichbaumer",
     "role": "",
-    "image": "/images/team/elfriede-stockinger.jpg",
-    "reads": ""
+    "image": "/images/team/andrea-krichbaumer.jpg",
+    "reads": "Romane, historische Romane"
   },
   {
     "order": 5,
     "name": "Doris Reithmayr",
     "role": "",
     "image": "/images/team/doris-reithmayr.jpg",
-    "reads": ""
+    "reads": "Thriller und Übernatürliches"
   },
   {
     "order": 6,
     "name": "Sabrina Riegler",
     "role": "",
     "image": "/images/team/sabrina-riegler.jpg",
-    "reads": ""
+    "reads": "Romane, Kinderbücher mit Kindern"
   },
   {
     "order": 7,
-    "name": "Andrea Krichbaumer",
+    "name": "Daniela Neugschwandtner",
     "role": "",
-    "image": "/images/team/andrea-krichbaumer.jpg",
-    "reads": ""
+    "image": "/images/team/daniela-neugschwandtner.jpg",
+    "reads": "Romane, zur Abwechslung Krimis"
   },
   {
     "order": 8,
-    "name": "Renate Brandstätter",
+    "name": "Elfriede Stockinger",
     "role": "",
-    "image": "/images/team/renate-brandstaetter.jpg",
-    "reads": ""
+    "image": "/images/team/elfriede-stockinger.jpg",
+    "reads": "Krimis und historische Romane"
   },
   {
     "order": 9,
     "name": "Karin Pilz",
     "role": "",
     "image": "/images/team/karin-pilz.jpg",
-    "reads": ""
+    "reads": "Biografien und Romane"
   },
   {
     "order": 10,
     "name": "Andreas Weixelbaumer",
     "role": "",
     "image": "/images/team/andreas-weixelbaumer.jpg",
-    "reads": ""
+    "reads": "Regional- und Landkrimis, Biografien"
   },
   {
     "order": 11,
     "name": "Claudia Wiesinger",
     "role": "",
     "image": "/images/team/claudia-wiesinger.jpg",
-    "reads": ""
+    "reads": "Romane und Übernatürliches"
   }
 ]

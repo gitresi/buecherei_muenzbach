@@ -433,7 +433,7 @@ page('veranstaltungen', 'Veranstaltungen', 'Lesungen, Lange Nacht der Bibliothek
 
 def kb(f): return f'{round(os.path.getsize(OUT + f) / 1024)} KB'
 # ---------- Team ----------
-members = '\n'.join(f'''<div class="card member">{tm(m, 190)}<strong>{m["name"]}</strong>{'<span class="role">Leitung</span>' if m.get("role") else ''}<span class="reads">Liest gerne: {m.get("reads") or "[Genre]"}</span></div>''' for m in team)
+members = '\n'.join(f'''<div class="card member">{tm(m, 190)}<strong>{m["name"]}</strong>{f'<span class="role">{m["role"]}</span>' if m.get("role") else ''}<span class="reads">Liest gerne: {m.get("reads") or "[Genre]"}</span></div>''' for m in team)
 teamp = f'''<section class="page-hero"><div class="wrap single"><div class="stack"><span class="eyebrow">Unser Team</span><h1>Die Geschichtenhüter:innen</h1>
 <p class="lead">Die Bücherei Münzbach gibt es seit 1890 – damals als einzelner Bücherschrank in der Pfarrkanzlei. 1994 wurden Pfarr- und Gemeindebücherei zusammengelegt. Heute betreuen elf Ehrenamtliche rund 4.400 Medien, die Ausleihe und die Veranstaltungen.</p></div></div></section>
 <div class="wrap">

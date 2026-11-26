@@ -258,14 +258,14 @@ def ev_slider(title):
     slides = []
     for it in EV_IMG.get(title, []):
         if isinstance(it, str):
-            p, a, w, h = IMG[it]; slides.append(f'<img src="{p[:-4]}-800.jpg" alt="{a}" loading="lazy" decoding="async">')
+            p, a, w, h = IMG[it]; slides.append(f'<img src="{p[:-4]}-800.jpg" data-full="{p}" alt="{a}" loading="lazy" decoding="async">')
         else:
             slides.append(f'<img src="{it[0]}" alt="{it[1]}" loading="lazy" decoding="async">')
     if not slides: return ''
     n = len(slides)
     nav = '' if n < 2 else ('<button type="button" class="sl-btn prev" aria-label="Vorheriges Foto">‹</button><button type="button" class="sl-btn next" aria-label="Nächstes Foto">›</button>'
         + '<div class="sl-dots" aria-hidden="true">' + ''.join(f'<span{" class=" + chr(34) + "on" + chr(34) if i == 0 else ""}></span>' for i in range(n)) + '</div>')
-    return f'<div class="slider" data-slider><div class="sl-track" tabindex="0" aria-label="Fotos: {title}">{"".join(slides)}</div>{nav}</div>'
+    return f'<div class="slider" data-slider><div class="sl-track" tabindex="0" aria-label="Fotos: {title} – Enter oder Klick zeigt sie groß">{"".join(slides)}</div>{nav}</div>'
 
 # ---------- Kommende Termine (Platzhalter bis zur Pflege im Backoffice) ----------
 # Auf True setzen, sobald echte Termine eingetragen sind. Bei False: Abschnitt auf der

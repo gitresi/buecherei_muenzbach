@@ -78,5 +78,59 @@
       var i = idx();
       dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
     }, { passive: true });
+    // Klick oder Enter öffnet die Fotos groß
+    var imgs = Array.prototype.slice.call(track.querySelectorAll('img'));
+    imgs.forEach(function (im, k) { im.addEventListener('click', function () { lightbox(imgs, k, track); }); });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lightbox(imgs, idx(), track); }
+    });
   });
+
+  // Großansicht der Fotos
+  var lb, lbImg, lbCap, lbCount, lbList = [], lbI = 0, lbBack = null;
+  function lbShow(i) {
+    lbI = (i + lbList.length) % lbList.length;
+    var im = lbList[lbI];
+    lbImg.src = im.getAttribute('data-full') || im.currentSrc || im.src;
+    lbImg.alt = im.alt;
+    lbCap.textContent = im.alt;
+    lbCount.textContent = (lbI + 1) + ' / ' + lbList.length;
+    lb.classList.toggle('single', lbList.length < 2);
+  }
+  function lightbox(list, i, back) {
+    if (!lb) {
+      lb = document.createElement('dialog');
+      lb.className = 'lb';
+      lb.setAttribute('aria-label', 'Fotos in Großansicht');
+      lb.innerHTML = '<button type="button" class="lb-close" aria-label="Schließen">×</button>'
+        + '<button type="button" class="lb-nav prev" aria-label="Vorheriges Foto">‹</button>'
+        + '<figure><img alt=""><figcaption><span class="lb-count"></span> <span class="lb-cap"></span></figcaption></figure>'
+        + '<button type="button" class="lb-nav next" aria-label="Nächstes Foto">›</button>';
+      document.body.appendChild(lb);
+      lbImg = lb.querySelector('img'); lbCap = lb.querySelector('.lb-cap'); lbCount = lb.querySelector('.lb-count');
+      lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
+      lb.querySelector('.prev').addEventListener('click', function () { lbShow(lbI - 1); });
+      lb.querySelector('.next').addEventListener('click', function () { lbShow(lbI + 1); });
+      lb.addEventListener('click', function (e) { if (e.target === lb || e.target.tagName === 'FIGURE') lb.close(); });
+      lb.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); lbShow(lbI + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); lbShow(lbI - 1); }
+      });
+      var x0 = null;
+      lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0; x0 = null;
+        if (Math.abs(dx) > 40) lbShow(lbI + (dx < 0 ? 1 : -1));
+      });
+      lb.addEventListener('close', function () {
+        document.documentElement.style.overflow = '';
+        if (lbBack) lbBack.focus();
+      });
+    }
+    lbList = list; lbBack = back; lbShow(i);
+    document.documentElement.style.overflow = 'hidden';
+    lb.showModal();
+    lb.querySelector('.lb-close').focus();
+  }
 })();

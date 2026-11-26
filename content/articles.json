@@ -1,5 +1,14 @@
 [
   {
+    "title": "Weg vom Bildschirm – hin zum Papier!",
+    "medium": "Pfarrblatt",
+    "issue": "Herbst 2026",
+    "date": "2026-10",
+    "teaser": "Martina Prinz und Maria Berger über die Leitung der Bücherei, ihre Ausbildung und ihre Projekte. Dazu: Ferienaktion am Energieweg und neue Regale.",
+    "file": "/downloads/pfarrblatt-2026-10.pdf",
+    "featured": true
+  },
+  {
     "title": "Dankeschön an den Verschönerungsverein",
     "medium": "Pfarrblatt",
     "issue": "Sommer 2026",
@@ -15,7 +24,7 @@
     "date": "2026-03",
     "teaser": "Rückblick auf die erste Kinderbuchlesung, die erweiterten Öffnungszeiten und die Bilanz 2025: 4.392 Medien, 8.587 Entlehnungen.",
     "file": "/downloads/rundblick-2026-03.pdf",
-    "featured": true
+    "featured": false
   },
   {
     "title": "Neuer Webkatalog, mehr Öffnungszeiten",

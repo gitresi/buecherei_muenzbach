@@ -233,9 +233,10 @@ def tm(m, size):
     s400 = f'{b}-400.jpg?v={ver(b[1:] + "-400.jpg")}'; s800 = f'{src}?v={ver(src[1:])}'
     return f'<img src="{s400}" srcset="{s400} 400w, {s800} 800w" sizes="{size}px" alt="Porträt von {m["name"]}" width="400" height="400" loading="lazy" decoding="async">'
 
-MON={'Aug':'August','Mai':'Mai','Apr':'April','Dez':'Dezember','Sep':'September'}
+MON={'Nov':'November','Aug':'August','Mai':'Mai','Apr':'April','Dez':'Dezember','Sep':'September'}
 EVENTS = [
- ('31', 'Aug', '2026', 'Für Kinder', 'Ferienaktion der Bücherei', 'Ein Nachmittag mit Spielen, Basteln und Vorlesen für Kinder – zum Abschluss der Sommerferien.', 'Pfarrblatt Sommer 2026'),
+ ('15', 'Nov', '2026', 'Für alle', 'Buchausstellung', 'Bei der Buchausstellung wurden die Vielleser der Sommerferien geehrt. Das Team der Bücherei bedankt sich für die zahlreichen Besucher und Bestellungen.', 'Bücherei Münzbach'),
+ ('31', 'Aug', '2026', 'Für Kinder', 'Ferienaktion der Bücherei', 'Über 50 Kinder waren dabei. An Stationen am Energieweg bestimmten sie Blätter und legten Naturmandalas – richtige Kunstwerke. Zum Abschluss gab es im Pfarrgarten eine Stärkung, gesponsert von der Firma Pilshofer.', 'Pfarrblatt Herbst 2026'),
  ('22', 'Mai', '2026', 'Für Familien', 'Miteinanderfest mit Bücherwurm Willi', 'Gemeinsam mit Kindergarten und Krabbelstubengruppe: Abenteuer im Reich des Bücherwurms, im Pfarrgarten und in der Bücherei.', 'Pfarrblatt Sommer 2026'),
  ('24', 'Apr', '2026', 'Für Kinder', 'Lange Nacht der Bibliotheken', 'Lesetheater „Als der Mond die Sterne ordnen wollte“ nach Lena Raubaum – mit den Kindern einstudiert, Kulisse inklusive, Aufführung am Abend.', 'Pfarrblatt Sommer 2026'),
  ('13', 'Dez', '2025', 'Für Kinder & Familien', 'Lesezauber im Advent', 'Michael Hölzel aus Mauthausen las aus seinem Kinderbuch „Hexe Maxim und der Himmelszug“. Dazu wurden Engel aus alten Buchseiten gebastelt.', 'Rundblick März 2026'),
@@ -246,11 +247,12 @@ EVENTS = [
 # Fotos je Veranstaltung (Slider). Wo es noch keine eigenen Fotos gibt, stehen Bilder aus der Bücherei.
 EV_IMG = {
  'Ferienaktion der Bücherei': [('/images/veranstaltungen/ferienaktion-2026-1.jpg', 'Kinder und Betreuerinnen beim Picknick auf Decken in der Wiese'), ('/images/veranstaltungen/ferienaktion-2026-2.jpg', 'Von Kindern gelegtes Naturbild aus Ästen, Blättern und Früchten am Waldboden')],
- 'Miteinanderfest mit Bücherwurm Willi': ['schild', 'raum'],
- 'Lange Nacht der Bibliotheken': [('/images/veranstaltungen/lange-nacht-2026.jpg', 'Kinder basteln bei der Langen Nacht der Bibliotheken gelbe Sterne'), 'raumhoch'],
- 'Lesezauber im Advent': [('/images/veranstaltungen/lesezauber-2025.jpg', 'Plakat „Lesezauber im Advent“ mit aufgeschlagenem Buch'), 'ecke'],
- 'Büchereicafé mit Bücherflohmarkt': [('/images/veranstaltungen/buechereicafe-2025-1.jpg', 'Besucherin mit Kind beim Büchereicafé, im Hintergrund Kuchen und Kaffee'), ('/images/veranstaltungen/buechereicafe-2025-2.jpg', 'Mitarbeiterin zeigt ein Spiel vor dem Spieleregal')],
- 'Bunte Ferienaktion': [('/images/veranstaltungen/ferienaktion-2025.jpg', 'Mitarbeiterinnen mit Familien und Kleinkind bei der Ferienaktion'), 'kinder'],
+ 'Buchausstellung': [('/images/veranstaltungen/buchausstellung-2026-lesekoenige.jpg', 'Die geehrten Vielleser der Sommerferien mit ihren Urkunden'), ('/images/veranstaltungen/buchausstellung-2026-buechertisch.jpg', 'Büchertische mit Weihnachtsbüchern, Romanen und Bestsellern')],
+ 'Miteinanderfest mit Bücherwurm Willi': ['schild', ('/images/veranstaltungen/miteinanderfest-2026-lesezelt.jpg', 'Vorleserin im bunt dekorierten Lesezelt mit Sitzmatte'), ('/images/veranstaltungen/miteinanderfest-2026-buecherwurm.jpg', 'Team der Bücherei schaut durch die Ringe des Bücherwurms Willi aus Holz'), ('/images/veranstaltungen/miteinanderfest-2026-pfarrgarten.jpg', 'Viele Familien beim Miteinanderfest im Pfarrgarten'), ('/images/veranstaltungen/miteinanderfest-2026-buecherei.jpg', 'Eltern und Kinder drängen sich in der Bücherei')],
+ 'Lange Nacht der Bibliotheken': [('/images/veranstaltungen/lange-nacht-2026-basteln.jpg', 'Kinder basteln die Kulisse für das Lesetheater'), ('/images/veranstaltungen/lange-nacht-2026-lesetheater.jpg', 'Kinder führen vor einer Kulisse mit Mond das Lesetheater auf')],
+ 'Lesezauber im Advent': [('/images/veranstaltungen/lesezauber-2025.jpg', 'Plakat „Lesezauber im Advent“ mit aufgeschlagenem Buch'), ('/images/veranstaltungen/lesezauber-2025-lesung.jpg', 'Michael Hölzel liest am Tisch unter einer Leselampe vor'), ('/images/veranstaltungen/lesezauber-2025-gruppe.jpg', 'Michael Hölzel mit seinem Buch und dem Team der Bücherei'), ('/images/veranstaltungen/lesezauber-2025-basteln.jpg', 'Kinder basteln Engel aus alten Buchseiten'), ('/images/veranstaltungen/lesezauber-2025-engel.jpg', 'Fertige Engel aus gefalteten Buchseiten')],
+ 'Büchereicafé mit Bücherflohmarkt': [('/images/veranstaltungen/flohmarkt-2025-team.jpg', 'Team der Bücherei mit Kindern und Einkaufswagen voller Bücher vor dem Pfarrhof'), ('/images/veranstaltungen/flohmarkt-2025-spiele.jpg', 'Regal mit Spielen und Ständer mit Zeitschriften')],
+ 'Bunte Ferienaktion': [('/images/veranstaltungen/ferienaktion-2025-handabdruecke.jpg', 'Plakat mit bunten Handabdrücken der Kinder an einer Tür'), ('/images/veranstaltungen/ferienaktion-2025-lesemaennchen.jpg', 'Gebastelte Lesemännchen aus Papier auf einem Tisch'), ('/images/veranstaltungen/ferienaktion-2025-basteln.jpg', 'Kinder basteln gemeinsam an langen Tischen')],
 }
 def ev_slider(title):
     slides = []
@@ -268,14 +270,13 @@ def ev_slider(title):
 # ---------- Kommende Termine (Platzhalter bis zur Pflege im Backoffice) ----------
 # Auf True setzen, sobald echte Termine eingetragen sind. Bei False: Abschnitt auf der
 # Veranstaltungsseite ausgeblendet, Startseite zeigt stattdessen die letzten Veranstaltungen.
-SHOW_UPCOMING = False
+SHOW_UPCOMING = True
+# (Tag, Monat, Für wen, Titel, Wann · Wo, Beschreibung, Bild-Schlüssel aus IMG oder ''). Nach dem Termin wieder entfernen.
 UPCOMING = [
- ('Für Kinder', '[Vorlesestunde]', '[Wochentag], [Uhrzeit] · Bücherei Münzbach', 'Foto: Vorlesen in der Kinderecke'),
- ('Für Erwachsene', '[Lesung mit Autor:in]', '[Wochentag], [Uhrzeit] · [Ort]', 'Foto: Lesung'),
- ('Für die ganze Familie', '[Spielenachmittag]', '[Wochentag], [Uhrzeit] · Bücherei Münzbach', 'Foto: Spiele am Tisch'),
+ ('28', 'Nov', 'Für alle', 'Münzbacher Adventzauber', 'Sa, 28. & So, 29. November · Kloster Münzbach', 'Die Bücherei ist heuer beim Münzbacher Adventzauber dabei. Samstag 14 bis 18 Uhr, Sonntag 9 bis 17 Uhr.', 'ecke'),
 ]
-HOME_UP = [('[Vorlesestunde für Kinder]', '[Uhrzeit] · Bücherei Münzbach'), ('[Lesung / Buchausstellung]', '[Uhrzeit] · [Ort]'), ('[Spielenachmittag]', '[Uhrzeit] · Bücherei Münzbach')]
-upcoming_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen"><span class="date"><b>[TT]</b><small>[Monat]</small></span><span class="t"><strong>{t}</strong><span>{m}</span></span></a>' for t, m in HOME_UP)
+if not UPCOMING: SHOW_UPCOMING = False
+upcoming_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen"><span class="date"><b>{d}</b><small>{m}</small></span><span class="t"><strong>{t}</strong><span>{w}</span></span></a>' for d, m, tag, t, w, x, im in UPCOMING)
 recent_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen#rueckblick"><span class="date"><b>{d}</b><small>{m}</small></span><span class="t"><strong>{t}</strong><span>{int(d)}. {MON[m]} {y}</span></span></a>' for d, m, y, tag, t, x, s in EVENTS[:3])
 if SHOW_UPCOMING:
     home_events = f'''<div class="section-head" style="margin-bottom:20px"><div class="stack"><span class="eyebrow">Was ansteht</span><h2 style="font-size:clamp(28px,2.8vw,40px)">Veranstaltungen</h2></div><a class="more" href="/veranstaltungen">Alle Termine →</a></div>
@@ -288,10 +289,10 @@ else:
 {recent_home}
 </div>'''
 upcoming_page = '\n'.join(f'''<article class="card up">
-<span class="date date-lg"><b>[TT]</b><small>[Monat]</small></span>
-<div class="ph">{ph}</div>
-<div class="stack" style="gap:12px"><span class="tag">{tag}</span><h3>{t}</h3><span class="muted">{m}</span><p>[Kurzbeschreibung: Worum geht es, für wen ist es gedacht, braucht es eine Anmeldung?]</p></div>
-</article>''' for tag, t, m, ph in UPCOMING)
+<span class="date date-lg"><b>{d}</b><small>{m}</small></span>
+{f'<img class="ph" src="{IMG[im][0][:-4]}-800.jpg" alt="{IMG[im][1]}" loading="lazy" decoding="async" style="object-fit:cover;padding:0;border:0;width:100%">' if im else f'<div class="ph" aria-hidden="true">{tag}</div>'}
+<div class="stack" style="gap:12px"><span class="tag">{tag}</span><h3>{t}</h3><span class="muted">{w}</span><p>{x}</p></div>
+</article>''' for d, m, tag, t, w, x, im in UPCOMING)
 
 # ---------- Startseite ----------
 recent = '\n'.join(f'''<a class="card ev" href="/veranstaltungen#rueckblick"><span class="date" aria-hidden="true"><b>{d}</b><small>{m}</small></span><span class="t"><strong>{t}</strong><span>{int(d)}. {MON[m]} {y} · {tag}</span></span></a>'''
@@ -323,12 +324,13 @@ home = f'''<div class="wrap">
 <div class="card tip">
 <span class="eyebrow">Buchtipp aus der Bücherei</span>
 <div class="tip-inner">
-<div class="cover" aria-hidden="true"><small>Kriminalroman</small><b>Donau so rot</b><small>Thomas Baum</small></div>
+<img class="cover" src="/images/buchtipp-weihnachten-im-geheimen-buchladen.jpg" alt="Buchcover: Weihnachten im geheimen Buchladen von Cressida McLaughlin" width="480" height="751" loading="lazy" decoding="async" style="padding:0;height:auto;aspect-ratio:auto;background:none">
 <div class="stack" style="gap:10px">
-<h3>Donau so rot</h3>
-<span class="meta">Thomas Baum · Kriminalroman</span>
-<p>Ein Krimi eines Linzer Autors, der in der Region spielt. Gut für alle, die Spannung mit vertrauter Kulisse mögen.</p>
+<h3>Weihnachten im geheimen Buchladen</h3>
+<span class="meta">Cressida McLaughlin · Roman</span>
+<p>Ein Geschenk, ein geheimnisvoller Absender und die Chance auf ein Zuhause. Ein weihnachtlicher Wohlfühlroman über die Buchbinderin Sophie, die an der Nord-Norfolk-Küste lebt und enge Bindungen eigentlich meidet.</p>
 <span class="by">Empfohlen vom Bücherei-Team</span>
+<span class="muted" style="font-size:13px">Cover: © dtv Verlagsgesellschaft</span>
 </div>
 </div>
 </div>
@@ -396,7 +398,7 @@ angebot = f'''<section class="page-hero"><div class="wrap">
 <div class="grid g4">
 {media("B", "#1b6f7b", "Bücher", "Romane, Krimis, Thriller, New Adult, Sachbücher, Kinder- und Jugendbücher.")}
 {media("S", "#3f6620", "Spiele", "Brett- und Kartenspiele für Familie, Freundeskreis und Spieleabende.")}
-{media("T", "#8a6410", "Tonies", "Rund 40 Tonie-Figuren mit Hörspielen und Liedern für die Toniebox.")}
+{media("T", "#8a6410", "Tonies", "Rund 80 Tonie-Figuren mit Hörspielen und Liedern für die Toniebox.")}
 {media("H", "#2f7a90", "Hörbücher &amp; CDs", "Zum Zuhören unterwegs, beim Autofahren oder vor dem Einschlafen.")}
 </div>
 </section>
@@ -405,7 +407,7 @@ angebot = f'''<section class="page-hero"><div class="wrap">
 <div class="grid g3">
 <div class="card aud">{P("kinder", sizes="(max-width: 860px) 100vw, 33vw")}<span class="body"><strong>Kinder</strong><span>Bilderbücher, Erstlesebücher, Vorlesebücher und Tonies. Dazu Kinderspiele für zu Hause.</span></span></div>
 <div class="card aud c2">{P("sach", sizes="(max-width: 860px) 100vw, 33vw")}<span class="body"><strong>Schulkinder &amp; Jugendliche</strong><span>Reihen, Comics, Fantasy und Jugendromane, außerdem Sachbücher für Schule und Freizeit.</span></span></div>
-<div class="card aud c3">{P("romane", sizes="(max-width: 860px) 100vw, 33vw")}<span class="body"><strong>Erwachsene</strong><span>Romane, Bestseller, New Adult, Krimis und Thriller sowie Sachbücher zu Sport, Technik und Geschichte.</span></span></div>
+<div class="card aud c3">{P("romane", sizes="(max-width: 860px) 100vw, 33vw")}<span class="body"><strong>Erwachsene</strong><span>Romane, Bestseller, New Adult, Krimis und Thriller sowie Sachbücher.</span></span></div>
 </div>
 </section>
 <section class="card split" aria-labelledby="h-kat">
@@ -439,7 +441,6 @@ veran = f'''<section class="page-hero"><div class="wrap single"><div class="stac
 {past}
 </div>
 </section>
-{cta("Eine Idee für eine Veranstaltung?", "Lesung, Spielenachmittag oder Bastelaktion – wir freuen uns über Vorschläge.", "/kontakt", "Kontakt aufnehmen")}
 <div style="height:clamp(56px,7vw,96px)"></div>
 </div>'''
 page('veranstaltungen', 'Veranstaltungen', 'Lesungen, Lange Nacht der Bibliotheken, Ferienaktion und Büchereicafé: Veranstaltungen der Bücherei Münzbach.', 'veranstaltungen', veran)
@@ -472,7 +473,7 @@ page('team', 'Team', 'Das ehrenamtliche Team der Bücherei Münzbach – die Ges
 
 # ---------- Artikel ----------
 def kb(f): return f'{round(os.path.getsize(OUT + f) / 1024)} KB'
-thumbs = {'/downloads/pfarrblatt-2026-07.pdf': '/images/artikel-pfarrblatt-2026-07.jpg', '/downloads/rundblick-2026-03.pdf': '/images/artikel-rundblick-2026-03.jpg', '/downloads/pfarrblatt-2026-04.pdf': '/images/artikel-pfarrblatt-2026-04.jpg'}
+thumbs = {'/downloads/pfarrblatt-2026-10.pdf': '/images/artikel-pfarrblatt-2026-10.jpg', '/downloads/pfarrblatt-2026-07.pdf': '/images/artikel-pfarrblatt-2026-07.jpg', '/downloads/rundblick-2026-03.pdf': '/images/artikel-rundblick-2026-03.jpg', '/downloads/pfarrblatt-2026-04.pdf': '/images/artikel-pfarrblatt-2026-04.jpg'}
 feat = [a for a in articles if a['featured']]; rest = [a for a in articles if not a['featured']]
 fc = '\n'.join(f'''<article class="card art">
 <div class="thumb"><img src="{thumbs[a["file"]]}" alt="" width="640" height="905" loading="lazy"></div>
@@ -530,7 +531,7 @@ imp = f'''<section class="page-hero"><div class="wrap single"><div class="stack"
 <h2>Grundlegende Richtung</h2>
 <p>Information über das Angebot, die Öffnungszeiten und die Veranstaltungen der Öffentlichen Bücherei der Pfarre Münzbach.</p>
 <h2>Fotos</h2>
-<p>Bücherei Münzbach. Logos der Unterstützer: jeweilige Unternehmen und Vereine.</p>
+<p>Bücherei Münzbach. Logos der Unterstützer: jeweilige Unternehmen und Vereine. Buchcover im Buchtipp: jeweiliger Verlag (derzeit dtv Verlagsgesellschaft, München).</p>
 <h2>Umsetzung</h2>
 <p>Social Agency, Perg – <a href="https://www.social-agency.at" target="_blank" rel="noopener">social-agency.at</a></p>
 <h2>Haftung für Links</h2>

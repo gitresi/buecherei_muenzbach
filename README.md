@@ -21,7 +21,7 @@ Fertige statische Website, Hosting über Netlify. Kein Framework; der Netlify-Bu
 - `assets/` – CSS, JavaScript, lokal eingebundene Schriften (Manrope, Nunito – keine Google-Fonts-Verbindung), Logo
 - `images/` – Fotos (jeweils 1600 px und 800 px), Porträts (800 und 400 px), Unterstützer-Logos (PNG, transparent)
 - `downloads/` – Beiträge aus Pfarrblatt und Rundblick als PDF
-- `netlify/functions/kontakt.mjs` – Netlify-Funktion für das Kontaktformular (Versand über Resend), erreichbar unter `/api/kontakt`
+- Kontaktformular über **Netlify Forms** (Formulare `kontakt` und `kontakt-kurz`, Spam-Schutz über das versteckte Feld `website`)
 - `netlify.toml` – Build, Weiterleitungen, Header
 - `api/`, `vercel.json`, `.vercelignore` – alte Vercel-Variante, wird auf Netlify nicht verwendet
 - `content/*.json` – Team, Beiträge, Unterstützer: Startdaten für das spätere Supabase-Backoffice
@@ -31,14 +31,11 @@ Fertige statische Website, Hosting über Netlify. Kein Framework; der Netlify-Bu
 ## Go-live mit Netlify
 
 1. Netlify → Add new site → Import an existing project → GitHub → Repo `buecherei_muenzbach` wählen. Build-Einstellungen kommen aus `netlify.toml` (nichts eintragen).
-2. Umgebungsvariablen setzen (Site configuration → Environment variables), danach neu deployen:
-   - `RESEND_API_KEY` – Schlüssel von resend.com
-   - `KONTAKT_ABSENDER` – z. B. `Website Bücherei Münzbach <website@buecherei-muenzbach.at>` (Domain in Resend verifizieren)
-   - `KONTAKT_EMPFAENGER` – `buecherei.muenzbach@gmail.com`
+2. Forms aktivieren (Project configuration → Forms → Enable form detection), danach neu deployen. Unter Forms → Form notifications eine E-Mail-Benachrichtigung an `buecherei.muenzbach@gmail.com` anlegen.
 3. Domain unter Domain management hinzufügen, DNS beim Domain-Anbieter auf Netlify umstellen (HTTPS stellt Netlify automatisch aus).
 4. Falls die Domain nicht `buecherei-muenzbach.at` ist: Domain in `tools/generate.py` (canonical, og:image, Schema), `robots.txt` und `sitemap.xml` anpassen.
 
-Solange Resend nicht eingerichtet ist, bietet das Formular automatisch an, die Nachricht per E-Mail-Programm zu schicken.
+Klappt der Versand nicht, bietet das Formular automatisch an, die Nachricht per E-Mail-Programm zu schicken.
 
 ## Termine
 

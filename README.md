@@ -40,14 +40,15 @@ Fertige statische Website, Hosting über Netlify. Kein Framework; der Netlify-Bu
 
 Solange Resend nicht eingerichtet ist, bietet das Formular automatisch an, die Nachricht per E-Mail-Programm zu schicken.
 
+## Termine
+
+Kommende Termine stehen in `UPCOMING` in `tools/generate.py`. Vergangene Termine dort entfernen und bei Bedarf in `EVENTS` (Rückblick) übernehmen; ist `UPCOMING` leer, zeigt die Startseite automatisch die letzten Veranstaltungen.
+
 ## Vor dem Go-live mit der Bücherei klären
 
 - Kartenmarkierung prüfen (Adresse Markt 1 laut Urkunde bestätigt)
 - Impressum: Rechtsträger (Pfarre Münzbach) und Leitung bestätigen
 - Datenschutzerklärung von jemandem mit DSGVO-Erfahrung prüfen lassen
-- Buchtipp („Donau so rot“, aus dem Pfarrblatt Ostern 2025) durch einen aktuellen ersetzen
-- Kommende Termine ergänzen, sobald bekannt
-- Optional: Original-Logo KF Lebens(t)räume, schärferes Logo Verschönerungsverein
 
 ## Nächster Schritt
 

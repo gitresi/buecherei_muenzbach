@@ -39,7 +39,7 @@ Klappt der Versand nicht, bietet das Formular automatisch an, die Nachricht per 
 
 ## Termine
 
-Kommende Termine stehen in `UPCOMING` in `tools/generate.py`. Vergangene Termine dort entfernen und bei Bedarf in `EVENTS` (Rückblick) übernehmen; ist `UPCOMING` leer, zeigt die Startseite automatisch die letzten Veranstaltungen.
+Kommende Termine stehen in `UPCOMING` in `tools/generate.py`. Datum, Uhrzeit und Ort für Google (strukturierte Daten „Event“) stehen je Titel in `EVENT_LD`. Die Sitemap wird beim Generieren neu geschrieben; das Änderungsdatum einer Seite ändert sich nur, wenn sich ihr Inhalt ändert. Vergangene Termine dort entfernen und bei Bedarf in `EVENTS` (Rückblick) übernehmen; ist `UPCOMING` leer, zeigt die Startseite automatisch die letzten Veranstaltungen.
 
 ## Vor dem Go-live mit der Bücherei klären
 

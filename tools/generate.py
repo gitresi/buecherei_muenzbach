@@ -113,14 +113,29 @@ FOOTER = f'''<footer class="site-footer">
 </div>
 </footer>'''
 
-def page(slug, title, desc, cur, body):
-    t = 'Bücherei Münzbach' if slug == 'index' else f'{title} – Bücherei Münzbach'
+SITE = 'https://www.buecherei-muenzbach.at'
+import re, datetime
+TODAY = datetime.date.today().isoformat()
+_old_sm = open(f'{OUT}/sitemap.xml', encoding='utf-8').read() if os.path.exists(f'{OUT}/sitemap.xml') else ''
+LASTMOD = dict(re.findall(r'<loc>([^<]+)</loc><lastmod>([^<]+)</lastmod>', _old_sm))
+SITEMAP = []
+
+def page(slug, title, desc, cur, body, extra_ld=None):
+    t = 'Bücherei Münzbach – Bücher, Spiele &amp; Tonies ausleihen' if slug == 'index' else f'{title} – Bücherei Münzbach'
     canon = 'https://www.buecherei-muenzbach.at' + ('/' if slug == 'index' else '/' + slug)
     ld = ''
     if slug == 'index':
         ld = '<script type="application/ld+json">' + json.dumps({
-            "@context": "https://schema.org", "@type": "Library", "name": "Öffentliche Bücherei der Pfarre Münzbach",
-            "url": "https://www.buecherei-muenzbach.at/", "email": EMAIL, "telephone": TELH,
+            "@context": "https://schema.org", "@type": "Library", "@id": SITE + "/#bibliothek",
+            "name": "Öffentliche Bücherei der Pfarre Münzbach", "alternateName": "Bücherei Münzbach",
+            "description": "Öffentliche Bücherei mit rund 4.400 Büchern, Spielen, Tonies und Hörbüchern für Kinder, Jugendliche und Erwachsene.",
+            "url": SITE + "/", "email": EMAIL, "telephone": TELH,
+            "logo": SITE + "/assets/img/logo-buecherei.png",
+            "image": [SITE + "/images/buecherei/neuheitenregal.jpg", SITE + "/images/buecherei/raum-ueberblick.jpg"],
+            "geo": {"@type": "GeoCoordinates", "latitude": 48.2464, "longitude": 14.7075},
+            "hasMap": "https://www.openstreetmap.org/?mlat=48.2464&mlon=14.7075#map=17/48.2464/14.7075",
+            "isAccessibleForFree": True,
+            "parentOrganization": {"@type": "Organization", "name": "Römisch-katholische Pfarre Münzbach"},
             "address": {"@type": "PostalAddress", "streetAddress": "Markt 1", "postalCode": "4323", "addressLocality": "Münzbach", "addressCountry": "AT"},
             "openingHoursSpecification": [
                 {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "18:00", "closes": "19:00"},
@@ -128,6 +143,8 @@ def page(slug, title, desc, cur, body):
                 {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "10:00"},
                 {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "09:00", "closes": "11:00"}],
             "sameAs": [INSTA, CAT]}, ensure_ascii=False) + '</script>\n'
+    for x in (extra_ld or []):
+        ld += '<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>\n'
     html = f'''<!doctype html>
 <html lang="de-AT">
 <head>
@@ -158,7 +175,12 @@ def page(slug, title, desc, cur, body):
 </body>
 </html>
 '''
-    open(f'{OUT}/{slug}.html', 'w', encoding='utf-8').write(html)
+    path = f'{OUT}/{slug}.html'
+    old = open(path, encoding='utf-8').read() if os.path.exists(path) else ''
+    open(path, 'w', encoding='utf-8').write(html)
+    if slug != '404':
+        # Änderungsdatum nur weiterschreiben, wenn sich die Seite inhaltlich geändert hat
+        SITEMAP.append((canon, TODAY if (old != html or canon not in LASTMOD) else LASTMOD[canon]))
 
 # ---------- Bausteine ----------
 def visit():
@@ -278,6 +300,10 @@ SHOW_UPCOMING = True
 UPCOMING = [
  ('28', 'Nov', 'Für alle', 'Münzbacher Adventzauber', 'Sa, 28. & So, 29. November · Kloster Münzbach', 'Die Bücherei ist heuer beim Münzbacher Adventzauber dabei. Samstag 14 bis 18 Uhr, Sonntag 9 bis 17 Uhr.', 'advent'),
 ]
+# Daten für Google (Veranstaltung) je Termintitel: Beginn, Ende, Ort
+EVENT_LD = {
+ 'Münzbacher Adventzauber': ('2026-11-28T14:00:00+01:00', '2026-11-29T17:00:00+01:00', 'Kloster Münzbach'),
+}
 if not UPCOMING: SHOW_UPCOMING = False
 upcoming_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen"><span class="date"><b>{d}</b><small>{m}</small></span><span class="t"><strong>{t}</strong><span>{w}</span></span></a>' for d, m, tag, t, w, x, im in UPCOMING)
 recent_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen#rueckblick"><span class="date"><b>{d}</b><small>{m}</small></span><span class="t"><strong>{t}</strong><span>{int(d)}. {MON[m]} {y}</span></span></a>' for d, m, y, tag, t, x, s in EVENTS[:3])
@@ -446,7 +472,19 @@ veran = f'''<section class="page-hero"><div class="wrap single"><div class="stac
 </section>
 <div style="height:clamp(56px,7vw,96px)"></div>
 </div>'''
-page('veranstaltungen', 'Veranstaltungen', 'Lesungen, Lange Nacht der Bibliotheken, Ferienaktion und Büchereicafé: Veranstaltungen der Bücherei Münzbach.', 'veranstaltungen', veran)
+def event_ld(d, m, tag, t, w, x, im):
+    if t not in EVENT_LD: return None
+    start, end, ort = EVENT_LD[t]
+    e = {"@context": "https://schema.org", "@type": "Event", "name": t, "description": x,
+         "startDate": start, "endDate": end, "eventStatus": "https://schema.org/EventScheduled",
+         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+         "location": {"@type": "Place", "name": ort, "address": {"@type": "PostalAddress", "addressLocality": "Münzbach", "postalCode": "4323", "addressCountry": "AT"}},
+         "isAccessibleForFree": True, "inLanguage": "de-AT",
+         "performer": {"@type": "Organization", "name": "Öffentliche Bücherei der Pfarre Münzbach", "url": SITE + "/"}}
+    if im: e["image"] = SITE + IMG[im][0]
+    return e
+ev_ld = [e for e in (event_ld(*u) for u in UPCOMING) if e] if SHOW_UPCOMING else []
+page('veranstaltungen', 'Veranstaltungen', 'Lesungen, Lange Nacht der Bibliotheken, Ferienaktion und Büchereicafé: Veranstaltungen der Bücherei Münzbach.', 'veranstaltungen', veran, ev_ld)
 
 def kb(f): return f'{round(os.path.getsize(OUT + f) / 1024)} KB'
 # ---------- Team ----------
@@ -599,4 +637,6 @@ page('datenschutz', 'Datenschutz', 'Datenschutzerklärung der Website der Öffen
 # ---------- 404 ----------
 nf = f'''<section class="page-hero"><div class="wrap single"><div class="stack"><span class="eyebrow">Seite nicht gefunden</span><h1>Diese Seite gibt es leider nicht.</h1><p class="lead">Vielleicht hilft dir einer dieser Wege weiter.</p><div class="btns"><a class="btn" href="/">Zur Startseite</a><a class="btn2" href="/kontakt">Kontakt</a></div></div></div></section>'''
 page('404', 'Seite nicht gefunden', 'Diese Seite wurde nicht gefunden.', '', nf)
+sm = '\n'.join(f'<url><loc>{u}</loc><lastmod>{d}</lastmod></url>' for u, d in SITEMAP)
+open(f'{OUT}/sitemap.xml', 'w', encoding='utf-8').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sm}\n</urlset>\n')
 print('ok')

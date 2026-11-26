@@ -5,17 +5,9 @@
 [build]
   command = "rm -rf dist && mkdir dist && cp -r *.html *.png robots.txt sitemap.xml assets images downloads dist/"
   publish = "dist"
-  functions = "netlify/functions"
 
-[functions]
-  node_bundler = "esbuild"
-
-# Kontaktformular: main.js schickt an /api/kontakt – intern an die Netlify-Funktion weiterleiten
-[[redirects]]
-  from = "/api/kontakt"
-  to = "/.netlify/functions/kontakt"
-  status = 200
-  force = true
+# Kontaktformular: Netlify Forms (data-netlify im HTML). Formularerkennung und
+# E-Mail-Benachrichtigung sind in Netlify unter Project configuration → Forms eingestellt.
 
 # Alte .html-Adressen auf saubere URLs umleiten
 [[redirects]]

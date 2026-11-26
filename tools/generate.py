@@ -202,7 +202,9 @@ def form(prefix, full=False):
 <div class="field"><label for="{prefix}-titel">Titel / Autor:in</label><input id="{prefix}-titel" name="titel" class="inp" type="text" placeholder="bei Medienwunsch"></div>
 </div>'''
     head = '<h2 style="font-size:clamp(28px,2.6vw,38px)">Nachricht &amp; Medienwunsch</h2>' if full else ''
-    return f'''<form class="card" data-contact novalidate>
+    fname = 'kontakt' if full else 'kontakt-kurz'
+    return f'''<form class="card" name="{fname}" method="POST" action="/kontakt" data-netlify="true" netlify-honeypot="website" data-contact novalidate>
+<input type="hidden" name="form-name" value="{fname}">
 {head}{chips}
 <div class="row2">
 <div class="field"><label for="{prefix}-name">Name</label><input id="{prefix}-name" name="name" class="inp" type="text" autocomplete="name" placeholder="Vor- und Nachname" required></div>
@@ -552,7 +554,7 @@ ds = f'''<section class="page-hero"><div class="wrap single"><div class="stack">
 <h2>Hosting</h2>
 <p>Die Website wird bei Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA, betrieben. Netlify verarbeitet die oben genannten Zugriffsdaten, um die Website auszuliefern und vor Missbrauch zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Mit Netlify besteht ein Auftragsverarbeitungsvertrag; die Übermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. von Standardvertragsklauseln.</p>
 <h2>Formulardaten und Kontaktaufnahme</h2>
-<p>Wenn Sie via Formular auf der Website oder per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen zwölf Monate bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Nachrichten aus dem Kontaktformular werden über den Versanddienst Resend (Resend, Inc., USA) an unser Postfach zugestellt.</p>
+<p>Wenn Sie via Formular auf der Website oder per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen zwölf Monate bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Nachrichten aus dem Kontaktformular werden über die Formularfunktion unseres Hosting-Anbieters Netlify (siehe „Hosting“) entgegengenommen, dort gespeichert und per E-Mail an unser Postfach weitergeleitet. Wir löschen sie bei Netlify, sobald die Anfrage erledigt ist, spätestens nach zwölf Monaten.</p>
 <p>Wir ersuchen Sie, beim Schutz Ihrer Daten mitzuhelfen, indem Sie uns vertrauliche Informationen nicht über unverschlüsselte Kommunikationswege zukommen lassen.</p>
 <h2>Datenspeicherung</h2>
 <p>Wir weisen darauf hin, dass zum Zweck von Medien-Reservierungen und Online-Katalog-Funktionen vom jeweils externen Service-Anbieter gegebenenfalls Cookies und IP-Daten des Benutzers dieser Services gespeichert werden. Eine Zusammenarbeit erfolgt nur mit Dienstleistern, die DSGVO-konform sind.</p>

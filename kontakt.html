@@ -39,7 +39,8 @@
 <section class="page-hero"><div class="wrap single"><div class="stack"><span class="eyebrow">Kontakt</span><h1>Schau vorbei oder schreib uns</h1><p class="lead">Fragen, Anregungen oder ein Buch, das dir im Regal fehlt – wir melden uns.</p></div></div></section>
 <div class="wrap">
 <div class="kontakt">
-<form class="card" data-contact novalidate>
+<form class="card" name="kontakt" method="POST" action="/kontakt" data-netlify="true" netlify-honeypot="website" data-contact novalidate>
+<input type="hidden" name="form-name" value="kontakt">
 <h2 style="font-size:clamp(28px,2.6vw,38px)">Nachricht &amp; Medienwunsch</h2><fieldset class="chips"><legend class="legend">Worum geht es?</legend>
 <label><input type="radio" name="anliegen" value="Medienwunsch" checked><span>Medienwunsch</span></label>
 <label><input type="radio" name="anliegen" value="Frage"><span>Frage</span></label>
@@ -111,6 +112,6 @@
 </div>
 </div>
 </footer>
-<script src="/assets/js/main.js?v=bed76c92" defer></script>
+<script src="/assets/js/main.js?v=b208edb5" defer></script>
 </body>
 </html>

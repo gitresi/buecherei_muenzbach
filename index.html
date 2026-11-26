@@ -154,7 +154,8 @@
 </div>
 <a class="more" href="/kontakt">Alle Kontaktdaten &amp; Anfahrt →</a>
 </div>
-<form class="card" data-contact novalidate>
+<form class="card" name="kontakt-kurz" method="POST" action="/kontakt" data-netlify="true" netlify-honeypot="website" data-contact novalidate>
+<input type="hidden" name="form-name" value="kontakt-kurz">
 
 <div class="row2">
 <div class="field"><label for="h-name">Name</label><input id="h-name" name="name" class="inp" type="text" autocomplete="name" placeholder="Vor- und Nachname" required></div>
@@ -208,6 +209,6 @@
 </div>
 </div>
 </footer>
-<script src="/assets/js/main.js?v=bed76c92" defer></script>
+<script src="/assets/js/main.js?v=b208edb5" defer></script>
 </body>
 </html>

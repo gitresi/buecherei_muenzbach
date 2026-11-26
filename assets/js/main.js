@@ -43,13 +43,12 @@
       var data = {};
       new FormData(form).forEach(function (v, k) { data[k] = String(v); });
       submit.disabled = true;
-      fetch('/api/kontakt', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
-        .then(function (res) {
-          if (res.ok) {
-            form.reset();
-            show('ok', 'Danke! Deine Nachricht ist angekommen. Wir melden uns so bald wie möglich.');
-          } else { throw new Error(res.j.error || 'Fehler'); }
+      // Netlify Forms: Versand an die Seite selbst, Netlify nimmt das Formular entgegen
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+        .then(function (r) {
+          if (!r.ok) throw new Error('Fehler ' + r.status);
+          form.reset();
+          show('ok', 'Danke! Deine Nachricht ist angekommen. Wir melden uns so bald wie möglich.');
         })
         .catch(function () {
           var body = 'Name: ' + (data.name || '') + '\nE-Mail: ' + (data.email || '') + '\nAnliegen: ' + (data.anliegen || '') +

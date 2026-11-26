@@ -51,6 +51,7 @@ IMG = {
  'kinder': ('/images/buecherei/kinderregal-spiele-tonies.jpg', 'Kinderregal mit bunten Büchern, Spielen und Tonies', 1200, 1600),
  'ecke': ('/images/buecherei/buchtipp-ecke.jpg', 'Ecke mit Buchempfehlungen auf Holzkisten und einem rot gedeckten Tisch', 1600, 1200),
  'raum': ('/images/buecherei/raum-ueberblick.jpg', 'Innenraum der Bücherei mit Regalen und einem Trog voller Bilderbücher', 1600, 1200),
+ 'advent': ('/images/veranstaltungen/adventzauber-2026.jpg', 'Plakat Adventzauber im Kloster Münzbach, 28. November 14 bis 18 Uhr und 29. November 9 bis 17 Uhr', 1279, 1600),
  'theke2': ('/images/buecherei/theke-und-regale.jpg', 'Arbeitsplatz an der Ausleihe mit Blick auf die Regale', 1200, 1600),
 }
 def P(k, cls='', sizes='(max-width: 860px) 100vw, 50vw', eager=False):
@@ -275,7 +276,7 @@ def ev_slider(title):
 SHOW_UPCOMING = True
 # (Tag, Monat, Für wen, Titel, Wann · Wo, Beschreibung, Bild-Schlüssel aus IMG oder ''). Nach dem Termin wieder entfernen.
 UPCOMING = [
- ('28', 'Nov', 'Für alle', 'Münzbacher Adventzauber', 'Sa, 28. & So, 29. November · Kloster Münzbach', 'Die Bücherei ist heuer beim Münzbacher Adventzauber dabei. Samstag 14 bis 18 Uhr, Sonntag 9 bis 17 Uhr.', 'ecke'),
+ ('28', 'Nov', 'Für alle', 'Münzbacher Adventzauber', 'Sa, 28. & So, 29. November · Kloster Münzbach', 'Die Bücherei ist heuer beim Münzbacher Adventzauber dabei. Samstag 14 bis 18 Uhr, Sonntag 9 bis 17 Uhr.', 'advent'),
 ]
 if not UPCOMING: SHOW_UPCOMING = False
 upcoming_home = '\n'.join(f'<a class="card ev" href="/veranstaltungen"><span class="date"><b>{d}</b><small>{m}</small></span><span class="t"><strong>{t}</strong><span>{w}</span></span></a>' for d, m, tag, t, w, x, im in UPCOMING)
@@ -292,7 +293,7 @@ else:
 </div>'''
 upcoming_page = '\n'.join(f'''<article class="card up">
 <span class="date date-lg"><b>{d}</b><small>{m}</small></span>
-{f'<img class="ph" src="{IMG[im][0][:-4]}-800.jpg" alt="{IMG[im][1]}" loading="lazy" decoding="async" style="object-fit:cover;padding:0;border:0;width:100%">' if im else f'<div class="ph" aria-hidden="true">{tag}</div>'}
+{f'<img class="ph{" poster" if IMG[im][3] > IMG[im][2] else ""}" src="{IMG[im][0][:-4]}-800.jpg" alt="{IMG[im][1]}" loading="lazy" decoding="async" style="object-fit:cover;padding:0;border:0;width:100%">' if im else f'<div class="ph" aria-hidden="true">{tag}</div>'}
 <div class="stack" style="gap:12px"><span class="tag">{tag}</span><h3>{t}</h3><span class="muted">{w}</span><p>{x}</p></div>
 </article>''' for d, m, tag, t, w, x, im in UPCOMING)
 

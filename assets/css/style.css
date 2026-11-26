@@ -362,3 +362,6 @@ h1{hyphens:manual;-webkit-hyphens:manual}
 .lb-close:focus-visible,.lb-nav:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .lb.single .lb-nav,.lb.single .lb-count{display:none}
 @media (max-width:640px){.lb[open]{grid-template-columns:1fr}.lb-nav{position:absolute;bottom:18px;margin:0}.lb-nav.prev{left:18px}.lb-nav.next{right:18px}.lb figure{padding:64px 0 90px}.lb img{max-height:calc(100dvh - 210px);border-radius:0}.lb figcaption{padding:0 16px}}
+/* Hochformat-Plakat bei kommenden Terminen ganz zeigen */
+.up img.ph.poster{height:auto;aspect-ratio:1279/1600;max-width:380px}
+@media (max-width:960px){.up img.ph.poster{height:auto;max-width:100%}}
